@@ -210,6 +210,100 @@
   .source-link{font-size:11px;color:var(--gold);text-decoration:none;border:1px dashed var(--gold-light);padding:1px 5px;margin-left:4px}
   .legend{display:flex;gap:14px;font-size:12px;color:var(--ink-3);margin-bottom:12px}
   .legend-dot{width:10px;height:10px;display:inline-block;margin-right:4px;vertical-align:middle}
+
+  /* =================== 指数百科 · Popup =================== */
+  .idx-fab{position:fixed;right:24px;bottom:24px;z-index:60;background:linear-gradient(135deg,var(--up) 0%,var(--up-deep) 100%);
+    color:#fff;border:2px solid var(--gold-light);box-shadow:0 6px 18px rgba(14,42,71,.25);padding:12px 18px;cursor:pointer;
+    font-family:'Noto Serif SC';font-weight:700;font-size:14px;letter-spacing:2px;display:flex;align-items:center;gap:8px;transition:all .2s}
+  .idx-fab:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(14,42,71,.32)}
+  .idx-fab .fab-ico{font-size:18px}
+
+  .idx-overlay{position:fixed;inset:0;background:rgba(14,42,71,.55);z-index:100;display:none;align-items:flex-start;justify-content:center;
+    padding:40px 20px;overflow-y:auto}
+  .idx-overlay.open{display:flex}
+  .idx-modal{background:var(--paper);width:100%;max-width:1080px;border:1px solid var(--line-strong);border-top:5px solid var(--up);
+    box-shadow:0 20px 60px rgba(0,0,0,.3);position:relative;animation:idxFadeIn .25s ease-out}
+  @keyframes idxFadeIn{from{opacity:0;transform:translateY(-12px)}to{opacity:1;transform:translateY(0)}}
+  .idx-modal-head{padding:18px 28px 14px;border-bottom:2px solid var(--navy);display:flex;justify-content:space-between;align-items:center;
+    background:linear-gradient(180deg,#FAF8F2 0%,#FFFFFF 100%)}
+  .idx-modal-title{font-family:'Noto Serif SC';font-weight:900;font-size:22px;color:var(--navy);display:flex;align-items:baseline;gap:14px}
+  .idx-modal-title .idx-modal-en{font-size:11px;color:var(--ink-3);letter-spacing:3px;font-family:'Noto Sans SC'}
+  .idx-modal-close{background:transparent;border:1px solid var(--line-strong);color:var(--ink-3);width:32px;height:32px;
+    cursor:pointer;font-size:18px;line-height:1;transition:all .15s;font-family:inherit}
+  .idx-modal-close:hover{background:var(--up);color:#fff;border-color:var(--up)}
+  .idx-modal-body{padding:22px 28px 28px;max-height:78vh;overflow-y:auto}
+
+  /* Grid view */
+  .idx-cat-bar{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:18px;padding-bottom:14px;border-bottom:1px dashed var(--line-strong)}
+  .idx-cat{padding:6px 14px;font-size:12px;border:1px solid var(--line-strong);background:var(--paper);color:var(--ink-2);
+    cursor:pointer;letter-spacing:1px;transition:all .15s;font-family:inherit}
+  .idx-cat:hover{border-color:var(--navy);color:var(--navy)}
+  .idx-cat.active{background:var(--navy);color:#fff;border-color:var(--navy)}
+  .idx-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(248px,1fr));gap:12px}
+  .idx-card{background:var(--paper);border:1px solid var(--line);border-left:3px solid var(--gold);padding:14px 16px;cursor:pointer;
+    transition:all .2s;position:relative}
+  .idx-card:hover{border-left-color:var(--up);transform:translateY(-2px);box-shadow:0 6px 14px rgba(14,42,71,.08);background:#FAF8F2}
+  .idx-card-h{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px;gap:8px}
+  .idx-card-name{font-family:'Noto Serif SC';font-weight:700;font-size:15.5px;color:var(--navy)}
+  .idx-card-code{font-size:10.5px;color:var(--ink-3);letter-spacing:1px;font-family:'Courier New',monospace}
+  .idx-card-type{font-size:11px;color:var(--up-deep);background:var(--up-soft);padding:2px 7px;margin-bottom:6px;display:inline-block;letter-spacing:1px}
+  .idx-card-desc{font-size:12.5px;color:var(--ink-2);line-height:1.55}
+  .idx-card-style{font-size:11px;color:var(--ink-3);margin-top:6px;padding-top:6px;border-top:1px dashed var(--line)}
+  .idx-card-style b{color:var(--navy);font-weight:500}
+
+  /* Detail view */
+  .idx-detail{animation:idxFadeIn .25s ease-out}
+  .idx-back{display:inline-flex;align-items:center;gap:6px;background:transparent;border:1px solid var(--line-strong);
+    color:var(--navy);padding:6px 14px;font-size:12px;cursor:pointer;margin-bottom:18px;letter-spacing:1px;font-family:inherit;transition:all .15s}
+  .idx-back:hover{background:var(--navy);color:#fff}
+  .idx-detail-hero{background:linear-gradient(135deg,#FFF7E0 0%,#FAF8F2 100%);border:1px solid var(--gold-light);
+    border-left:5px solid var(--up);padding:18px 22px;margin-bottom:22px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;align-items:center}
+  .idx-detail-name-block{display:flex;flex-direction:column;gap:4px}
+  .idx-detail-name{font-family:'Noto Serif SC';font-weight:900;font-size:26px;color:var(--navy);line-height:1.2}
+  .idx-detail-sub{font-size:13px;color:var(--ink-3);letter-spacing:2px}
+  .idx-detail-sub b{color:var(--navy);font-family:'Courier New',monospace;letter-spacing:1px}
+  .idx-detail-tags{display:flex;flex-wrap:wrap;gap:6px}
+  .idx-tag{font-size:11px;padding:3px 10px;letter-spacing:1px;background:var(--up-soft);color:var(--up-deep)}
+  .idx-tag.navy{background:var(--navy);color:#fff}
+  .idx-tag.gold{background:var(--gold);color:#fff}
+
+  .idx-section{margin-bottom:18px}
+  .idx-section-h{font-family:'Noto Serif SC';font-weight:700;color:var(--navy);font-size:15px;
+    border-left:3px solid var(--up);padding-left:10px;margin-bottom:10px;display:flex;align-items:baseline;gap:10px}
+  .idx-section-h small{font-size:10.5px;color:var(--ink-3);letter-spacing:2px;font-family:'Noto Sans SC';font-weight:400}
+
+  .idx-rows{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+  .idx-row{background:var(--paper);padding:11px 14px;display:flex;flex-direction:column;gap:3px}
+  .idx-row-label{font-size:10.5px;color:var(--ink-3);letter-spacing:1.5px}
+  .idx-row-value{font-size:13.5px;color:var(--ink);font-weight:500;line-height:1.5}
+
+  .idx-rrr{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px}
+  .idx-rrr-cell{background:#FAF8F2;border:1px solid var(--line);padding:10px 12px;text-align:center}
+  .idx-rrr-label{font-size:11px;color:var(--ink-3);letter-spacing:1px;margin-bottom:4px}
+  .idx-rrr-value{font-family:'Noto Serif SC';font-weight:700;font-size:15px;color:var(--up-deep)}
+
+  .idx-purpose-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  @media(max-width:680px){.idx-purpose-grid{grid-template-columns:1fr} .idx-rrr{grid-template-columns:1fr}}
+  .idx-purpose-cell{background:var(--paper);border:1px solid var(--line);border-top:3px solid var(--gold);padding:12px 14px}
+  .idx-purpose-cell.investors{border-top-color:var(--up)}
+  .idx-purpose-cell.macro{border-top-color:var(--navy)}
+  .idx-purpose-cell-label{font-size:11px;color:var(--ink-3);letter-spacing:1.5px;margin-bottom:6px}
+  .idx-purpose-cell-text{font-size:13px;color:var(--ink-2);line-height:1.6}
+
+  .idx-etf-row{background:#FFFAEC;border:1px solid var(--gold-light);border-left:4px solid var(--gold);padding:12px 16px;
+    font-size:13px;color:var(--ink-2);line-height:1.6}
+  .idx-etf-row b{color:var(--navy);font-weight:700}
+
+  .idx-note{background:var(--up-soft);border-left:3px solid var(--up);padding:10px 14px;font-size:12.5px;
+    color:var(--up-deep);line-height:1.6;margin-top:14px}
+  .idx-note::before{content:'💡 ';margin-right:2px}
+
+  /* 内嵌 index link (auto-wired) */
+  .idx-link{color:inherit;text-decoration:none;border-bottom:1px dotted var(--gold);cursor:pointer;
+    transition:all .15s;padding-bottom:1px}
+  .idx-link:hover{color:var(--up);border-bottom-color:var(--up);border-bottom-style:solid}
+  .idx-link::after{content:'ⓘ';font-size:10px;margin-left:2px;color:var(--gold);vertical-align:super;opacity:.7}
+  .idx-link:hover::after{color:var(--up);opacity:1}
 </style>
 </head>
 <body>
@@ -224,16 +318,26 @@
       </div>
     </div>
     <div class="topbar-meta">
-      <span>统计区间：<b>2025-05 → 2026-04</b></span>
+      <span>12月趋势：<b>2025-05 → 2026-04</b></span>
+      <span>当月聚焦：<b>2026 年 5 月</b></span>
       <span>更新于：<b>2026-05-25</b></span>
-      <span>定位：<b>宏观交易者 · 基金 / ETF</b></span>
     </div>
   </div>
 </header>
 
 <nav class="chapters">
   <div class="chapters-inner" id="chapter-nav">
-    <a class="chapter-tab active" data-target="ch1"><span class="num">壹</span>指数表现</a>
+    <!-- 当月聚焦：2026 年 5 月 -->
+    <a class="chapter-tab active" data-target="ch-may1" style="background:#FFF1F3;border-right:1px solid #E4DED1"><span class="num" style="color:#9E1A2D">月</span>5月聚焦</a>
+    <a class="chapter-tab" data-target="ch-may2" style="background:#FFF1F3"><span class="num" style="color:#9E1A2D">风</span>宏观资金</a>
+    <a class="chapter-tab" data-target="ch-may3" style="background:#FFF1F3"><span class="num" style="color:#9E1A2D">题</span>主题板块</a>
+    <a class="chapter-tab" data-target="ch-may4" style="background:#FFF1F3"><span class="num" style="color:#9E1A2D">望</span>6月展望</a>
+    <!-- H2 2026 前瞻 -->
+    <a class="chapter-tab" data-target="ch-h2-1" style="background:#FFFAEC;border-left:1px solid var(--gold)"><span class="num" style="color:var(--gold)">景</span>H2情景</a>
+    <a class="chapter-tab" data-target="ch-h2-2" style="background:#FFFAEC"><span class="num" style="color:var(--gold)">配</span>H2题材</a>
+    <a class="chapter-tab" data-target="ch-h2-3" style="background:#FFFAEC;border-right:2px solid var(--navy)"><span class="num" style="color:var(--gold)">组</span>H2组合</a>
+    <!-- 12 月度趋势底层 -->
+    <a class="chapter-tab" data-target="ch1"><span class="num">壹</span>指数表现</a>
     <a class="chapter-tab" data-target="ch2"><span class="num">贰</span>行业排行</a>
     <a class="chapter-tab" data-target="ch3"><span class="num">叁</span>主题概念</a>
     <a class="chapter-tab" data-target="ch4"><span class="num">肆</span>风格因子</a>
@@ -247,6 +351,377 @@
 </nav>
 
 <main>
+
+<!-- ════════════════════════════════════════════════════════ -->
+<!-- ════════ 本月聚焦 · 2026 年 5 月 (4 章) ════════ -->
+<!-- ════════════════════════════════════════════════════════ -->
+
+<div style="background:linear-gradient(90deg,var(--up) 0%, var(--up-deep) 100%);color:#fff;padding:14px 20px;margin-bottom:18px;border-left:5px solid var(--gold);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px">
+  <div>
+    <div style="font-family:'Noto Serif SC';font-weight:900;font-size:20px;letter-spacing:2px">本 月 聚 焦 · 2026 年 5 月</div>
+    <div style="font-size:12.5px;color:#FCD6DB;letter-spacing:1px;margin-top:2px">MAY 2026 · MONTHLY TACTICAL VIEW · 接下来 4 章是当月观察；之后 10 章是 12 月趋势底层</div>
+  </div>
+  <div style="font-size:12.5px;text-align:right">
+    <div>截至 <b>2026-05-25</b></div>
+    <div style="color:#FCD6DB">先扬后抑 · 主线由"科技成长"切换至"周期价值"</div>
+  </div>
+</div>
+
+<!-- ============ 月：5月行情聚焦 ============ -->
+<section class="chapter" id="ch-may1" style="border-top:3px solid var(--up)">
+  <div class="ch-head">
+    <div class="ch-title"><span class="ch-num">月</span><span>5月行情聚焦 <span class="badge" style="background:var(--up);color:#fff;padding:2px 8px;font-size:11px;margin-left:8px">CURRENT MONTH</span></span></div>
+    <div class="ch-en">CHAPTER · MAY 2026 OVERVIEW</div>
+  </div>
+
+  <div class="tldr" style="background:linear-gradient(90deg,#FFE8EB 0%,#FFF7E0 100%);border-left-color:var(--up)">
+    <b style="color:var(--up-deep)">一句话总结：</b>5 月 A 股<b>先扬后抑</b> — 上半月"政策预期 + 流动性宽松"催出开门红，存储芯片、算力、机器人爆发；
+    中下旬"美债收益率上行 + 估值消化"打压成长，资金调仓至<b>煤炭 / 银行 / 地产 / 央企</b>等低估值防御板块。
+    <b>主线从"科技成长"切换至"周期价值"。</b>
+  </div>
+
+  <h3 class="serif" style="color:var(--navy);margin:6px 0 12px;font-size:17px;border-left:4px solid var(--up);padding-left:10px">5 月单月 · KPI</h3>
+  <div class="kpi-grid">
+    <div class="kpi"><span class="kpi-label">上证综指（MTD）</span><span class="kpi-value up">+1.6%</span><span class="kpi-sub">月内曾逼近 4,200 点</span></div>
+    <div class="kpi"><span class="kpi-label">沪深 300（MTD）</span><span class="kpi-value up">+3.8%</span><span class="kpi-sub">大盘蓝筹补涨</span></div>
+    <div class="kpi"><span class="kpi-label">上证 50（MTD）</span><span class="kpi-value up">+1.3%</span><span class="kpi-sub">权重稳健</span></div>
+    <div class="kpi"><span class="kpi-label">恒生指数</span><span class="kpi-value up">+0.2%</span><span class="kpi-sub">A 强港弱</span></div>
+    <div class="kpi"><span class="kpi-label">5/6 创业板</span><span class="kpi-value up">+2.75%</span><span class="kpi-sub">开门红单日</span></div>
+    <div class="kpi"><span class="kpi-label">5/6 科创 50</span><span class="kpi-value up">+5.47%</span><span class="kpi-sub">盘中曾涨 9%</span></div>
+    <div class="kpi"><span class="kpi-label">5/14 两市成交</span><span class="kpi-value up">3.36 万亿</span><span class="kpi-sub">连续 7 日破 3 万亿</span></div>
+    <div class="kpi"><span class="kpi-label">5/6 两市成交</span><span class="kpi-value up">3.23 万亿</span><span class="kpi-sub">月内峰值</span></div>
+  </div>
+
+  <h3 class="serif" style="color:var(--navy);margin:22px 0 12px;font-size:17px;border-left:4px solid var(--up);padding-left:10px">2026 年 1-5 月 YTD · 主要指数 <small style="font-family:'Noto Sans SC';font-weight:400;font-size:12px;color:var(--ink-3)">小盘 + 成长全面领跑</small></h3>
+  <div class="kpi-grid">
+    <div class="kpi"><span class="kpi-label">科创 50（YTD）</span><span class="kpi-value up">+18.9%</span><span class="kpi-sub">硬科技领跑</span></div>
+    <div class="kpi"><span class="kpi-label">创业板指（YTD）</span><span class="kpi-value up">+15.8%</span><span class="kpi-sub">成长龙头</span></div>
+    <div class="kpi"><span class="kpi-label">深证成指（YTD）</span><span class="kpi-value up">+12.2%</span><span class="kpi-sub">中盘弹性</span></div>
+    <div class="kpi"><span class="kpi-label">沪深 300（YTD）</span><span class="kpi-value up">+8.1%</span><span class="kpi-sub">大盘稳健</span></div>
+    <div class="kpi"><span class="kpi-label">上证综指（YTD）</span><span class="kpi-value up">+5.5%</span><span class="kpi-sub">价值偏稳</span></div>
+    <div class="kpi"><span class="kpi-label">有色金属（YTD）</span><span class="kpi-value up">+30%+</span><span class="kpi-sub">资源领涨</span></div>
+    <div class="kpi"><span class="kpi-label">银行（YTD）</span><span class="kpi-value down">−2%+</span><span class="kpi-sub">价值滞涨</span></div>
+    <div class="kpi"><span class="kpi-label">PE：上证</span><span class="kpi-value">~9 倍</span><span class="kpi-sub">中低位</span></div>
+  </div>
+
+  <h3 class="serif" style="color:var(--navy);margin:22px 0 12px;font-size:17px;border-left:4px solid var(--up);padding-left:10px">月度叙事 · 三阶段</h3>
+  <div id="may-timeline" class="theme-grid"></div>
+
+  <div class="quote serif" style="margin-top:18px;border-left:3px solid var(--up);padding:10px 16px;background:var(--up-soft);color:var(--up-deep);font-size:14px">
+    "5 月 A 股交易的不是实质性经济复苏，而是<b>"预期之争"</b> — 国内政策信号与外部流动性预期交织下的资金博弈。"
+  </div>
+</section>
+
+<!-- ============ 风：宏观 + 风格 + 资金面 ============ -->
+<section class="chapter" id="ch-may2" style="border-top:3px solid var(--up)">
+  <div class="ch-head">
+    <div class="ch-title"><span class="ch-num">风</span><span>5月宏观环境与资金面</span></div>
+    <div class="ch-en">CHAPTER · MACRO &amp; LIQUIDITY</div>
+  </div>
+
+  <div class="tldr">
+    <b>国内偏宽 + 海外承压。</b>4 月 PMI 50.3（在荣枯线上方），1-4 月工增 +5.6%、CPI +1.2%、PPI +2.8%；
+    海外 — 美国 CPI <b>+3.8%</b>、PPI <b>+6.0%</b>、10 年期美债触及 <b>4.8%</b>、年底降息预期基本落空。
+    资金 — 北向 5 月净流入 <b>286 亿</b>（流向半导体 / 电力设备）；ETF 月度净流出 <b>1,200 亿+</b>，红利 / 券商 / 债券 ETF 反向吸金。
+  </div>
+
+  <h3 class="serif" style="color:var(--navy);margin:6px 0 12px;font-size:17px;border-left:4px solid var(--up);padding-left:10px">1) 宏观数据</h3>
+  <div class="kpi-grid">
+    <div class="kpi"><span class="kpi-label">4 月 PMI（制造业）</span><span class="kpi-value up">50.3</span><span class="kpi-sub">−0.1pp，仍在扩张</span></div>
+    <div class="kpi"><span class="kpi-label">1-4 月工业增加值</span><span class="kpi-value up">+5.6%</span><span class="kpi-sub">生产稳健</span></div>
+    <div class="kpi"><span class="kpi-label">1-4 月社零</span><span class="kpi-value up">+1.9%</span><span class="kpi-sub">消费温和</span></div>
+    <div class="kpi"><span class="kpi-label">4 月 CPI YoY</span><span class="kpi-value up">+1.2%</span><span class="kpi-sub">能源 + 出行</span></div>
+    <div class="kpi"><span class="kpi-label">4 月 PPI YoY</span><span class="kpi-value up">+2.8%</span><span class="kpi-sub">大宗带动</span></div>
+    <div class="kpi"><span class="kpi-label">10 年期国债</span><span class="kpi-value">~2.7%</span><span class="kpi-sub">国内利率稳</span></div>
+    <div class="kpi"><span class="kpi-label">美国 CPI YoY</span><span class="kpi-value down">+3.8%</span><span class="kpi-sub">超预期</span></div>
+    <div class="kpi"><span class="kpi-label">10 年期美债</span><span class="kpi-value down">4.8%</span><span class="kpi-sub">压制成长股</span></div>
+  </div>
+
+  <h3 class="serif" style="color:var(--navy);margin:22px 0 12px;font-size:17px;border-left:4px solid var(--up);padding-left:10px">2) 资金流向 · 四大主体</h3>
+  <div class="theme-grid" id="may-flows"></div>
+
+  <h3 class="serif" style="color:var(--navy);margin:22px 0 12px;font-size:17px;border-left:4px solid var(--up);padding-left:10px">3) 风格切换信号</h3>
+  <table class="research">
+    <thead><tr><th style="width:160px">维度</th><th style="width:120px">前半月</th><th style="width:120px">后半月</th><th>解读</th></tr></thead>
+    <tbody>
+      <tr><td><b>大盘 vs 小盘</b></td><td><span class="perf-up">小盘领涨</span></td><td><span class="perf-down">大盘补涨</span></td><td>权重股拉升时主要股指反弹，中小创跌幅更大</td></tr>
+      <tr><td><b>成长 vs 价值</b></td><td><span class="perf-up">成长</span></td><td><span class="perf-down">价值</span></td><td>AI / 半导体涨幅居前，央企 / 金融抗跌；月末看价值反超</td></tr>
+      <tr><td><b>红利 vs 科技</b></td><td><span class="perf-up">科技</span></td><td><span class="perf-down">红利</span></td><td>震荡中"避险 + 高息"白马（银行 / 保险 / 地产）逆势走强</td></tr>
+      <tr><td><b>顺周期 vs 防御</b></td><td><span class="perf-up">顺周期</span></td><td><span class="perf-down">防御</span></td><td>煤炭、钢铁、建材随上游涨价获益；食品饮料 / 医药抗跌</td></tr>
+      <tr><td><b>主线</b></td><td><span class="perf-up">题材超跌反弹</span></td><td><span class="perf-down">资金回避过热</span></td><td>"开门红 → 调整" 的资金接力，结构性 &gt; 趋势性</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ============ 题：5月主题与板块 ============ -->
+<section class="chapter" id="ch-may3" style="border-top:3px solid var(--up)">
+  <div class="ch-head">
+    <div class="ch-title"><span class="ch-num">题</span><span>5月主题与板块表现</span></div>
+    <div class="ch-en">CHAPTER · MAY THEMES &amp; SECTORS</div>
+  </div>
+
+  <div class="tldr">
+    <b>5 月板块格局：</b><b style="color:var(--up-deep)">强势</b> = 煤炭 / 证券 / 房地产 / 银行（低估补涨 + 政策松绑）；
+    <b style="color:var(--down-deep)">弱势</b> = 计算机 / 通信 / 医药（高估值科技获利回吐）。
+    资金流向：北向偏好<b>蓝筹（茅台、招行）</b>；ETF 整体流出但<b>券商 / 通信 / 航空航天</b>逆势净流入。
+  </div>
+
+  <h3 class="serif" style="color:var(--navy);margin:6px 0 12px;font-size:17px;border-left:4px solid var(--up);padding-left:10px">1) 5月行业涨跌幅 · 8 大行业</h3>
+  <table class="research">
+    <thead><tr><th style="width:120px">行业</th><th style="width:100px">月涨跌幅</th><th>成交量</th><th>估值区间 (PE)</th><th>资金流向</th><th>特征 / 风险</th></tr></thead>
+    <tbody>
+      <tr><td><b>煤炭</b></td><td><span class="perf-up">+≈6%</span></td><td>放量</td><td>8-12（低）</td><td>净流入（央企）</td><td>基础性补涨，估值低；周期见顶风险</td></tr>
+      <tr><td><b>房地产开发</b></td><td><span class="perf-up">+≈6%</span></td><td>增量</td><td>5-8（低）</td><td>净流入（央企）</td><td>政策刺激主线，有潜力；政策落空风险</td></tr>
+      <tr><td><b>证券</b></td><td><span class="perf-up">+≈4%</span></td><td>放量</td><td>10-15</td><td>净流入</td><td>业绩改善 + 估值修复；高位风险较小</td></tr>
+      <tr><td><b>银行</b></td><td><span class="perf-up">+≈2-3%</span></td><td>平稳</td><td>5-7（低）</td><td>温和流入</td><td>债息预期支撑，抗跌；经济下行压力</td></tr>
+      <tr><td><b>机械设备</b></td><td><span class="perf-flat">±0%</span></td><td>扩张</td><td>15-25</td><td>适度流出</td><td>景气边际改善；周期不明朗</td></tr>
+      <tr><td><b>计算机 / 电子</b></td><td><span class="perf-down">−≈3%</span></td><td>高位盘整</td><td>30-50（高）</td><td>大幅流出</td><td>龙头领涨业绩好，中小票高风险；估值过高</td></tr>
+      <tr><td><b>医药生物</b></td><td><span class="perf-down">−4%</span></td><td>缩量</td><td>25-35</td><td>资金出逃</td><td>龙头较稳，中小企风险；政策监管加严</td></tr>
+      <tr><td><b>通信设备</b></td><td><span class="perf-down">−5%</span></td><td>放量</td><td>20-30</td><td>小幅流入</td><td>部分超跌反弹；国际竞争加剧风险</td></tr>
+    </tbody>
+  </table>
+
+  <h3 class="serif" style="color:var(--navy);margin:22px 0 12px;font-size:17px;border-left:4px solid var(--up);padding-left:10px">2) 5月 15 大主题速览</h3>
+  <div class="theme-grid" id="may-themes"></div>
+</section>
+
+<!-- ============ 望：6月展望与策略 ============ -->
+<section class="chapter" id="ch-may4" style="border-top:3px solid var(--up)">
+  <div class="ch-head">
+    <div class="ch-title"><span class="ch-num">望</span><span>6月市场展望与交易策略</span></div>
+    <div class="ch-en">CHAPTER · JUNE OUTLOOK &amp; STRATEGY</div>
+  </div>
+
+  <div class="tldr" style="background:linear-gradient(90deg,#FFE8EB 0%,#FFF7E0 100%);border-left-color:var(--up)">
+    <b style="color:var(--up-deep)">6 月主线预判：</b>
+    关注点回归"<b>国内需求改善 + 政策兑现</b>"。
+    短期：高估值科技承压；低估周期 / 金融 / 地产有补涨机会。
+    <b>风格大概率从"成长偏好"切回"价值稳健"。</b>
+  </div>
+
+  <h3 class="serif" style="color:var(--navy);margin:6px 0 12px;font-size:17px;border-left:4px solid var(--up);padding-left:10px">1) 6月关键观察清单</h3>
+  <div class="monitor-grid" id="june-watch"></div>
+
+  <h3 class="serif" style="color:var(--navy);margin:22px 0 12px;font-size:17px;border-left:4px solid var(--up);padding-left:10px">2) 四类交易策略</h3>
+  <div class="alloc-grid">
+    <div class="alloc-card up"><div class="alloc-stripe"></div>
+      <div class="alloc-title">进攻策略 <span class="alloc-pill over">逢低</span></div>
+      <div class="alloc-desc">中期景气改善明确的周期股与科技新材料。</div>
+      <ul class="alloc-list"><li>煤炭、有色、钢铁 ETF</li><li>半导体设备、光伏设备 ETF</li><li>军工 / 算力主题 ETF</li></ul>
+      <div class="alloc-signal"><b>触发：</b>PMI 回升 / 出口好转 / 美联储鸽派转向</div>
+    </div>
+    <div class="alloc-card core"><div class="alloc-stripe"></div>
+      <div class="alloc-title">防御策略 <span class="alloc-pill standard">底仓</span></div>
+      <div class="alloc-desc">高股息白马 + 必需消费抵御风险。</div>
+      <ul class="alloc-list"><li>红利 / 高股息 ETF</li><li>银行 / 保险 ETF</li><li>白酒 / 消费必需 ETF</li></ul>
+      <div class="alloc-signal"><b>触发：</b>外资流出 / 美债再上 / 主题集中调整</div>
+    </div>
+    <div class="alloc-card repair"><div class="alloc-stripe"></div>
+      <div class="alloc-title">逢低布局 <span class="alloc-pill watch">观察</span></div>
+      <div class="alloc-desc">前期大幅回调的优质科技 / 白马消费。</div>
+      <ul class="alloc-list"><li>计算机 / 电子龙头 ETF</li><li>白酒 / 大消费 ETF</li><li>主题 ETF（业绩确认后再加仓）</li></ul>
+      <div class="alloc-signal"><b>触发：</b>回调幅度 ≥ 15% + 业绩兑现信号</div>
+    </div>
+    <div class="alloc-card volatile"><div class="alloc-stripe"></div>
+      <div class="alloc-title">高低切换 <span class="alloc-pill small">动态</span></div>
+      <div class="alloc-desc">在风格 / 题材间动态调仓，上半月强势板块为卫星仓位，下半月转加低估值。</div>
+      <ul class="alloc-list"><li>切换时机：申万一级行业涨跌差扩大时</li><li>实操：每周组合 ±10%</li><li>仓位：卫星 20-25%</li></ul>
+      <div class="alloc-signal"><b>触发：</b>板块涨跌中位数差 &gt; 6pp / 周</div>
+    </div>
+  </div>
+
+  <h3 class="serif" style="color:var(--navy);margin:22px 0 12px;font-size:17px;border-left:4px solid var(--up);padding-left:10px">3) 当月推荐配置框架（核心-卫星）</h3>
+  <table class="research">
+    <thead><tr><th style="width:130px">类别</th><th style="width:90px">仓位</th><th>具体 ETF / 标的</th><th>当月理由</th></tr></thead>
+    <tbody>
+      <tr><td><b>核心宽基</b></td><td><span class="perf-up">40%</span></td><td>沪深 300 ETF、中证 500 ETF</td><td>5 月轮动频繁，低估值宽基稳健参与</td></tr>
+      <tr><td><b>风格价值（卫星）</b></td><td><span class="perf-up">20%</span></td><td>红利 ETF、中证央企 ETF、银行 / 保险 / 地产 ETF</td><td>当前价值股估值低、政策支持力度大</td></tr>
+      <tr><td><b>宽基成长（卫星）</b></td><td><span class="perf-up">10%</span></td><td>创业板 ETF、科创 50 ETF</td><td>结构性机会，等估值回落或基本面改善加仓</td></tr>
+      <tr><td><b>行业 / 周期主题</b></td><td><span class="perf-up">15%</span></td><td>半导体 ETF、军工 ETF、能源 ETF、通信 ETF</td><td>高景气 + 低估资源双驱</td></tr>
+      <tr><td><b>防御消费</b></td><td><span class="perf-up">10%</span></td><td>白酒 ETF、医药 ETF</td><td>稳定 + 估值不高，避险属性</td></tr>
+      <tr><td><b>现金 / 货币</b></td><td><span class="perf-flat">15%</span></td><td>货币 ETF</td><td>应对回调或伺机加仓</td></tr>
+    </tbody>
+  </table>
+
+  <h3 class="serif" style="color:var(--navy);margin:22px 0 12px;font-size:17px;border-left:4px solid var(--up);padding-left:10px">4) 风险清单（短中长三层）</h3>
+  <div class="monitor-grid" id="june-risks"></div>
+
+  <div style="margin-top:24px;background:linear-gradient(90deg,#FFE8EB 0%,#FFF7E0 100%);border:1px solid var(--up);padding:14px 18px;border-left:5px solid var(--up)">
+    <b style="color:var(--up-deep);font-size:14px">📍 5月最终结论（一句话）：</b>
+    <span style="color:var(--ink-2)">5 月 A 股是"风险偏好先扬后抑"的典型行情，由国内政策预期 + 外部流动性周期共同驱动。
+    投资策略 = <b style="color:var(--up-deep)">核心持稳定 ETF + 卫星动态调整 + 现金应对波动</b>。
+    未来三个月重点跟踪宏观政策落地与全球流动性变化。</span>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════ -->
+<!-- ════════ 下半年 H2 2026 前瞻（3 章 · 景 / 配 / 组）════════ -->
+<!-- ════════════════════════════════════════════════════════ -->
+
+<div style="background:linear-gradient(90deg,var(--gold) 0%, var(--gold-light) 100%);color:#fff;padding:14px 20px;margin:14px 0 18px;border-left:5px solid var(--up);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px">
+  <div>
+    <div style="font-family:'Noto Serif SC';font-weight:900;font-size:20px;letter-spacing:2px;color:#FFFDF6">下 半 年 H 2 · 2 0 2 6 前 瞻</div>
+    <div style="font-size:12.5px;color:#FFF7E0;letter-spacing:1px;margin-top:2px">SECOND HALF OUTLOOK · 5 大情景 · 8 大题材 · 3 套组合 · 跟踪与纪律</div>
+  </div>
+  <div style="font-size:12.5px;text-align:right;color:#FFF7E0">基于 5 月末市场环境对 H2 投资主线的结构性判断</div>
+</div>
+
+<!-- ============ 景：下半年5大情景 ============ -->
+<section class="chapter" id="ch-h2-1" style="border-top:3px solid var(--gold)">
+  <div class="ch-head">
+    <div class="ch-title"><span class="ch-num" style="color:var(--gold);border-right-color:var(--up)">景</span><span>下半年 5 大情景分析</span></div>
+    <div class="ch-en">CHAPTER · H2 SCENARIOS</div>
+  </div>
+
+  <div class="tldr" style="background:linear-gradient(90deg,#FFF7E0 0%,#FAF8F2 100%);border-left-color:var(--gold)">
+    <b>5 种情景非互斥</b> — 实际行情多为<b>交织</b>态势。基准判断：<b>"稳增长 + 科技成长并重"</b>。
+    政府托底内需 / 基建 → 银行 / 公用事业有配置价值；产业升级 + 利润驱动 → 科技 / 制造仍是核心主线。
+  </div>
+
+  <div class="theme-grid" id="h2-scenarios"></div>
+
+  <h3 class="serif" style="color:var(--navy);margin:22px 0 12px;font-size:17px;border-left:4px solid var(--gold);padding-left:10px">情景概率矩阵</h3>
+  <table class="research">
+    <thead><tr><th style="width:200px">情景</th><th style="width:100px">概率打分</th><th style="width:200px">关键判断指标</th><th>受益方向（首选）</th><th>风险点</th></tr></thead>
+    <tbody>
+      <tr><td><b>① 弱复苏 + 政策托底</b></td><td><span class="perf-up">★★★★☆</span></td><td>PMI 50-51、社零增速、地方专项债节奏</td><td>银行、央企、公用事业、家电、消费券类</td><td>政策力度不及预期 / 地产深度下滑</td></tr>
+      <tr><td><b>② 流动性改善 + 风险偏好</b></td><td><span class="perf-up">★★★★☆</span></td><td>美联储 6 月点阵图、北向流入、两融</td><td>科创 50 / 创业板、半导体、AI、机器人、低空</td><td>成长泡沫 + 美元反弹快速回调</td></tr>
+      <tr><td><b>③ 出口 / 制造周期修复</b></td><td><span class="perf-up">★★★☆☆</span></td><td>出口同比、PMI 新出口订单、汽车销量</td><td>高端装备、工程机械、家电、电子、汽车零部件、船舶</td><td>美元走强 → 资本流入受压</td></tr>
+      <tr><td><b>④ 全球商品价格上行</b></td><td><span class="perf-up">★★★☆☆</span></td><td>铜 / 铝 / 铝、油气价格、CRB 指数</td><td>黄金、铜铝稀土、油气煤炭、大宗化工</td><td>国内通胀回升 → 货币政策收敛</td></tr>
+      <tr><td><b>⑤ 消费信心修复</b></td><td><span class="perf-up">★★☆☆☆</span></td><td>社零、餐饮、旅游人次、居民收入</td><td>白酒、旅游酒店、免税、化妆品、医美、影视游戏</td><td>消费复苏疲弱 / 刺激政策落空</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ============ 配：下半年8大题材优先级 ============ -->
+<section class="chapter" id="ch-h2-2" style="border-top:3px solid var(--gold)">
+  <div class="ch-head">
+    <div class="ch-title"><span class="ch-num" style="color:var(--gold);border-right-color:var(--up)">配</span><span>下半年 8 大题材优先级</span></div>
+    <div class="ch-en">CHAPTER · H2 THEME PRIORITY</div>
+  </div>
+
+  <div class="tldr" style="background:linear-gradient(90deg,#FFF7E0 0%,#FAF8F2 100%);border-left-color:var(--gold)">
+    <b>核心主线：</b>AI 算力 + 半导体 + 新能源车 = 下半年 <b>α 三剑客</b>；
+    <b>辅助主线：</b>新能源发电、先进制造、周期资源、金融红利、消费医疗 = 板块均衡器。
+  </div>
+
+  <div class="theme-grid" id="h2-themes"></div>
+
+  <h3 class="serif" style="color:var(--navy);margin:22px 0 12px;font-size:17px;border-left:4px solid var(--gold);padding-left:10px">详细优先级表</h3>
+  <table class="research">
+    <thead><tr><th style="width:30px">#</th><th style="width:150px">题材</th><th style="width:100px">当前阶段</th><th>下半年逻辑</th><th style="width:170px">代表 ETF</th><th style="width:90px">配置建议</th></tr></thead>
+    <tbody id="h2-themes-tbody"></tbody>
+  </table>
+</section>
+
+<!-- ============ 组：3套组合 + 跟踪指标 ============ -->
+<section class="chapter" id="ch-h2-3" style="border-top:3px solid var(--gold)">
+  <div class="ch-head">
+    <div class="ch-title"><span class="ch-num" style="color:var(--gold);border-right-color:var(--up)">组</span><span>三套组合 + 跟踪与纪律</span></div>
+    <div class="ch-en">CHAPTER · PORTFOLIOS &amp; DISCIPLINE</div>
+  </div>
+
+  <div class="tldr" style="background:linear-gradient(90deg,#FFF7E0 0%,#FAF8F2 100%);border-left-color:var(--gold)">
+    <b>策略原则：</b>核心-卫星框架。
+    宽基（沪深 300、中证 500）+ 红利防御 = <b>核心仓</b>；科技 / 新能源 / 医疗主题 ETF = <b>卫星仓</b>。
+    根据 PMI、社融、北向、ETF 资金流向 5 大信号动态调仓。
+  </div>
+
+  <h3 class="serif" style="color:var(--navy);margin:6px 0 14px;font-size:17px;border-left:4px solid var(--gold);padding-left:10px">1) 三套 ETF 组合 <span class="badge" style="background:var(--gold);font-size:11px;margin-left:8px">点击切换</span></h3>
+
+  <div class="portfolio-switcher" id="h2-pf-switcher" style="display:flex;border:1px solid var(--navy);margin-bottom:20px;width:fit-content">
+    <div class="pf-tab active" data-pf="steady" style="padding:9px 22px;font-size:13px;font-weight:500;cursor:pointer;background:var(--paper);color:var(--navy);border-right:1px solid var(--navy)">稳健型<span style="font-size:10px;letter-spacing:2px;margin-left:6px;color:var(--gold-light)">STEADY</span></div>
+    <div class="pf-tab" data-pf="balanced" style="padding:9px 22px;font-size:13px;font-weight:500;cursor:pointer;background:var(--paper);color:var(--navy);border-right:1px solid var(--navy)">平衡型<span style="font-size:10px;letter-spacing:2px;margin-left:6px;color:var(--ink-3)">BALANCED</span></div>
+    <div class="pf-tab" data-pf="aggressive" style="padding:9px 22px;font-size:13px;font-weight:500;cursor:pointer;background:var(--paper);color:var(--navy)">进攻型<span style="font-size:10px;letter-spacing:2px;margin-left:6px;color:var(--ink-3)">AGGRESSIVE</span></div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:340px 1fr;gap:32px;align-items:start" id="h2-pf-body">
+    <div class="pf-summary" style="background:#FAF8F2;border:1px solid var(--line);padding:18px">
+      <h3 id="h2-pf-name" style="margin:0 0 12px;font-family:'Noto Serif SC';font-size:18px;color:var(--navy)">稳健型组合</h3>
+      <div class="pf-row" style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px dashed var(--line-strong);font-size:13px"><span>目标</span><b id="h2-pf-goal" style="color:var(--up);font-weight:700;font-family:'Noto Serif SC'">控制波动 + 稳健收益</b></div>
+      <div class="pf-row" style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px dashed var(--line-strong);font-size:13px"><span>核心 / 卫星</span><b id="h2-pf-core" style="color:var(--up);font-weight:700;font-family:'Noto Serif SC'">60-70% / 20-30%</b></div>
+      <div class="pf-row" style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px dashed var(--line-strong);font-size:13px"><span>防守仓</span><b id="h2-pf-cash" style="color:var(--up);font-weight:700;font-family:'Noto Serif SC'">10%</b></div>
+      <div class="pf-row" style="display:flex;justify-content:space-between;padding:8px 0;font-size:13px"><span>适合环境</span><b id="h2-pf-env" style="color:var(--up);font-weight:700;font-family:'Noto Serif SC';text-align:right">大盘承压 / 波动加剧</b></div>
+      <div class="pf-rationale" style="font-size:13px;color:var(--ink-2);margin-top:12px;padding-top:12px;border-top:1px solid var(--line-strong)" id="h2-pf-rationale">价值防御为基石，适合现阶段大盘承压时段。</div>
+    </div>
+    <div class="chart-card" style="padding:18px 22px">
+      <div class="chart-title">组合权重 <small id="h2-pf-tag">STEADY PORTFOLIO</small></div>
+      <div class="pf-holdings" id="h2-pf-holdings" style="display:flex;flex-direction:column;gap:6px"></div>
+      <div style="margin-top:14px;padding-top:12px;border-top:1px dashed var(--line-strong);font-size:12.5px;color:var(--ink-3)" id="h2-pf-trigger"></div>
+    </div>
+  </div>
+
+  <h3 class="serif" style="color:var(--navy);margin:30px 0 12px;font-size:17px;border-left:4px solid var(--gold);padding-left:10px">2) 跟踪指标 · 三层 <span class="badge" style="background:var(--gold);font-size:11px;margin-left:8px">点击 tab 过滤</span></h3>
+
+  <div class="monitor-tabs" id="h2-track-tabs" style="display:flex;border:1px solid var(--navy);margin-bottom:16px;width:fit-content">
+    <div class="sub-tab active" data-cat="all">全部</div>
+    <div class="sub-tab" data-cat="macro">宏观</div>
+    <div class="sub-tab" data-cat="market">市场</div>
+    <div class="sub-tab" data-cat="theme">题材</div>
+  </div>
+
+  <div class="monitor-grid" id="h2-tracks"></div>
+
+  <h3 class="serif" style="color:var(--navy);margin:30px 0 12px;font-size:17px;border-left:4px solid var(--gold);padding-left:10px">3) 五大交易信号</h3>
+  <div class="alloc-grid">
+    <div class="alloc-card up"><div class="alloc-stripe"></div>
+      <div class="alloc-title">加仓信号 <span class="alloc-pill over">攻</span></div>
+      <div class="alloc-desc">宏观超预期改善 + 流动性边际改善 + 行业业绩爆发。</div>
+      <ul class="alloc-list"><li>PMI 突升</li><li>信贷回暖、M2 上行</li><li>新能源车销量超预期 / AI 订单爆发</li></ul>
+    </div>
+    <div class="alloc-card avoid"><div class="alloc-stripe"></div>
+      <div class="alloc-title">减仓信号 <span class="alloc-pill under">守</span></div>
+      <div class="alloc-desc">宏观承压 + 资金流出 + 市场恐慌。</div>
+      <ul class="alloc-list"><li>PMI 持续低位 / 新负面数据</li><li>ETF 大赎回 / 北向大量抛售</li><li>成交放量下跌 + 融资被迫平仓</li></ul>
+    </div>
+    <div class="alloc-card volatile"><div class="alloc-stripe"></div>
+      <div class="alloc-title">风格切换 <span class="alloc-pill small">动态</span></div>
+      <div class="alloc-desc">经济 / 政策驱动因子变化时及时切换。</div>
+      <ul class="alloc-list"><li>担忧经济二次下行 → 银行 / 基建</li><li>风险偏好回升 → 切回成长</li><li>切换阈值：板块涨跌中位数差 &gt; 6pp / 周</li></ul>
+    </div>
+    <div class="alloc-card repair"><div class="alloc-stripe"></div>
+      <div class="alloc-title">止盈策略 <span class="alloc-pill watch">兑现</span></div>
+      <div class="alloc-desc">单板块累计涨幅 ≥ 30-50% 后分批兑现。</div>
+      <ul class="alloc-list"><li>政策窗口 / 财报窗口阶段性把握</li><li>主题 ETF 创新高后快速回落 → 大幅减仓</li><li>进攻型组合纪律最严</li></ul>
+    </div>
+    <div class="alloc-card core"><div class="alloc-stripe"></div>
+      <div class="alloc-title">风险防守 <span class="alloc-pill standard">核心</span></div>
+      <div class="alloc-desc">地缘 / 监管 / 海外崩盘传导风险释放时。</div>
+      <ul class="alloc-list"><li>果断持有核心防御 ETF</li><li>减配高估板块</li><li>10% 债券 / 货币仓位常备</li></ul>
+    </div>
+  </div>
+
+  <h3 class="serif" style="color:var(--navy);margin:30px 0 12px;font-size:17px;border-left:4px solid var(--gold);padding-left:10px">4) 9 点最终结论</h3>
+  <div class="conclusion-grid">
+    <div class="conc"><div class="conc-num">01</div><h4>5月末市场特征</h4><p><b>三速度格局</b> — 头部科技成长 / 资源最快，中坚小盘次之，大盘价值最弱。机构 + 外资偏好科技创新与新能源。牛市中后期，需防短期回调。</p></div>
+    <div class="conc"><div class="conc-num">02</div><h4>下半年主线</h4><p><b>科技革新 + 高端制造</b>为核心；辅以周期资源、国企改革 / 基建链、消费恢复；金融防御稳健底仓。成长与价值共振，风格轮动加剧。</p></div>
+    <div class="conc"><div class="conc-num">03</div><h4>5-8 个重点题材</h4><p>AI / 算力、半导体国产化、新能源车 + 锂电、光伏风电、资源周期、机器人工业制造、医疗创新、消费升级。政策 + 需求 + 业绩三重支撑。</p></div>
+    <div class="conc"><div class="conc-num">04</div><h4>ETF 配置方向</h4><p><b>主题 ETF + 宽基</b>。科技主题（科创 50 / 创业板 / 半导体 / AI / 机器人）+ 新能源（新能车 / 光伏 / 储能）；宽基平滑波动；红利对冲。</p></div>
+    <div class="conc"><div class="conc-num">05</div><h4>持有期限建议</h4><p>新能源车、核心芯片 = <b>中长期</b>；军工 / 游戏 = <b>短线</b>；红利 / 金融 = <b>组合核心常备</b>。涨幅巨大且基本面改进有限的板块 = <b>谨慎</b>。</p></div>
+    <div class="conc"><div class="conc-num">06</div><h4>避免追高</h4><p>估值极高且上涨主因资金推高的板块严格回避：短线"网红"股、部分周期股、商业模式不清晰的标的。<b>不重仓泡沫</b>。</p></div>
+    <div class="conc"><div class="conc-num">07</div><h4>下半年组合建议</h4><p>核心-卫星：宽基 + 红利 / 防御为核心，科技 / 新能源 / 医疗为卫星。宏观风险加大时提高防御权重；风险偏好回升时增配成长。</p></div>
+    <div class="conc"><div class="conc-num">08</div><h4>主要风险因素</h4><p>消费 / 房市持续疲软；海外资本退潮 / 美元急升；地缘冲突加剧；监管收紧。<b>科技板块内部风险</b>（供给过剩 / 创新失败）和流动性边际骤降。</p></div>
+    <div class="conc"><div class="conc-num">09</div><h4>首要跟踪指标</h4><p>宏观：PMI / 社融 / M2 / 出口。市场：上证 + 创业板趋势 / 成交额 / 融资余额 / ETF 资金流。题材：AI 算力订单 / 国产替代进度 / 新能源车销量 / 铜油价格。</p></div>
+  </div>
+
+  <div style="margin-top:24px;background:linear-gradient(90deg,#FFE8EB 0%,#FFF7E0 100%);border:1px solid var(--up);padding:14px 18px;border-left:5px solid var(--up)">
+    <b style="color:var(--up-deep);font-size:14px">📍 H2 2026 一句话：</b>
+    <span style="color:var(--ink-2)">2026 年 5 月底 A 股<b>正处于结构性上行阶段</b>，下半年重点关注<b>科技创新与新兴行业</b>的成长机会，同时兼顾<b>金融与周期板块</b>的稳健价值。
+    ETF 投资者 = <b style="color:var(--up-deep)">宽基 + 主题分散</b>，重视风控，避免盲目追高。</span>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════ -->
+<!-- ════════ 以下为 12 月度趋势底层（原报告 10 章） ════════ -->
+<!-- ════════════════════════════════════════════════════════ -->
+
+<div style="background:#FAF8F2;border:1px solid var(--line);border-left:5px solid var(--navy);padding:14px 20px;margin:14px 0 24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px">
+  <div>
+    <div style="font-family:'Noto Serif SC';font-weight:900;font-size:18px;color:var(--navy);letter-spacing:2px">1 2 月 度 趋 势 底 层</div>
+    <div style="font-size:12px;color:var(--ink-3);letter-spacing:1px;margin-top:2px">12-MONTH TREND FOUNDATION · 2025-05 → 2026-04 · 用于校准当月的位置</div>
+  </div>
+  <div style="font-size:12px;color:var(--ink-3);text-align:right">下面 10 章为长周期结构性框架，与上方两段（当月 / 下半年）互为长 / 短两条腿</div>
+</div>
 
 <!-- ============ 第一章：主要指数表现 ============ -->
 <section class="chapter" id="ch1">
@@ -609,7 +1084,179 @@
 
 </main>
 
+<!-- =================== 指数百科 · Floating Button + Modal =================== -->
+<button class="idx-fab" id="idx-fab" aria-label="打开指数百科">
+  <span class="fab-ico">📖</span><span>指数百科</span>
+</button>
+
+<div class="idx-overlay" id="idx-overlay" role="dialog" aria-modal="true">
+  <div class="idx-modal" role="document">
+    <div class="idx-modal-head">
+      <div class="idx-modal-title">
+        <span id="idx-modal-title-text">指数百科</span>
+        <span class="idx-modal-en" id="idx-modal-title-en">A-SHARE INDEX ENCYCLOPEDIA</span>
+      </div>
+      <button class="idx-modal-close" id="idx-modal-close" aria-label="关闭">✕</button>
+    </div>
+    <div class="idx-modal-body" id="idx-modal-body">
+      <!-- Grid view -->
+      <div id="idx-view-grid">
+        <div class="idx-cat-bar" id="idx-cat-bar"></div>
+        <div class="idx-grid" id="idx-grid"></div>
+      </div>
+      <!-- Detail view -->
+      <div id="idx-view-detail" style="display:none"></div>
+    </div>
+  </div>
+</div>
+
 <script>
+/* ====== 2026 年 5 月数据 ====== */
+const MAY_DATA = {
+  timeline:[
+    {phase:'第一段 · 开门红', tag:'5/6 ~ 5/13', cls:'hot', text:'科技成长 + 政策预期。算力租赁、存储芯片、半导体、商业航天爆发；存储芯片受美韩存储股大涨带动。白酒逆势走强。5/6 创业板单日 +2.75%、科创 50 +5.47%（盘中 +9%）。两市成交 3.23 万亿。'},
+    {phase:'第二段 · 中段调整', tag:'5/14 ~ 5/17', cls:'cold', text:'美 CPI/PPI 超预期 → 美债 10y 至 4.8% → 高估值科技承压。5/14 两市大幅调整，北向资金结束净流入，主力大规模净流出，防御情绪上升。两市成交 3.36 万亿（连续 7 日破 3 万亿）。'},
+    {phase:'第三段 · 价值轮动', tag:'5/18 ~ 5/25', cls:'hot', text:'资金回流大盘权重 — 银行、石化、央企强拉，煤炭 / 地产 / 金融等低估补涨。主线由"科技成长"切换至"周期价值"。月末沪深 300 强于中小板。'}
+  ],
+  flows:[
+    {n:'北向资金（外资）', tag:'净流入', cls:'hot', primary:'+286 亿', detail:'5月下旬累计；流入半导体（生益、长电、兆易等）、电力设备、新能源车零部件；卖出银行 / 地产 / 大盘蓝筹。',  note:'外资对中国高端制造长期看好'},
+    {n:'公募基金', tag:'仓位下调', cls:'cold', primary:'净申购减少', detail:'年初高仓位后小幅回调，5月发行量环比减少。机构偏好分化：头部布局科技成长 + 大金融。', note:'结构分化加剧'},
+    {n:'ETF 资金',  tag:'整体流出', cls:'cold', primary:'−1,200 亿+', detail:'5/12 单日流出 271 亿；半导体 / 新能源装备题材净赎回。策略风格 ETF（红利、证券）+ 债券 ETF 反向吸金（5/22 红利等 +14.5 亿，债券 +20 亿）。', note:'由"指数热"切向"防御 / 估值"方向'},
+    {n:'两融余额', tag:'高位', cls:'hot', primary:'2.8 万亿+', detail:'5 月融资净买入 +167.7 亿，杠杆率创历史新高。', note:'高位加杠杆，风险敞口大'}
+  ],
+  themes:[
+    {n:'AI 产业链 / 存储',     perf:'↑↑↑', cls:'hot', tag:'拥挤', desc:'华为高端芯片 + 海外存储涨价催化；估值过高，需警惕兑现风险。',     etf:'半导体 ETF、人工智能 ETF'},
+    {n:'半导体国产替代',      perf:'↑↑',  cls:'hot', tag:'长线', desc:'制裁刺激 + 政府扶持，国产厂商放量。可长期配置。',                       etf:'半导体 ETF (512480)'},
+    {n:'算力 / 数据中心',     perf:'↑↑',  cls:'hot', tag:'跟踪', desc:'光模块、存储、服务器上游涨价；AI 大模型 + 5G 拉动。',                  etf:'算力主题 ETF'},
+    {n:'机器人 / 高端装备',   perf:'↑',   cls:'hot', tag:'长线', desc:'工业自动化 + 新能源车智能化趋势；逻辑成熟，长线持有。',                etf:'机器人 ETF (159829)'},
+    {n:'低空经济',           perf:'↑',   cls:'hot', tag:'跟踪', desc:'军民融合 + 民航改革。航空航天 ETF 月内流入 1.3 亿。',                etf:'低空经济 ETF（暂少）'},
+    {n:'军工',               perf:'↑',   cls:'hot', tag:'长线', desc:'基建 + 防务双属性；多只军工 ETF 获配置。',                          etf:'军工 ETF (159864)'},
+    {n:'新能源汽车',         perf:'→',   cls:'neutral', tag:'底仓', desc:'补贴退坡 5 月表现平平，长期需求确定性高。低位布局。',                etf:'新能源车 ETF (159806)'},
+    {n:'光伏 / 储能 / 锂电', perf:'→',   cls:'neutral', tag:'择机', desc:'估值回落，未来视价格 + 政策。可逢低择机。',                         etf:'光伏 ETF (159691)'},
+    {n:'消费电子',           perf:'↓',   cls:'cold', tag:'回避', desc:'整体回调明显，苹果供应链竞争激烈。非必要不追高。',                    etf:'谨慎'},
+    {n:'医药',               perf:'→',   cls:'neutral', tag:'防御', desc:'疫情后业绩稳，避险属性受青睐。细分领域需甄别。',                     etf:'医药 ETF (512170)'},
+    {n:'白酒 / 大消费',     perf:'→',   cls:'neutral', tag:'防御', desc:'走弱后分化，白酒企稳获北上买入。配置作防御。',                       etf:'消费 ETF、白酒 ETF'},
+    {n:'高股息 / 央企红利', perf:'↑',   cls:'hot', tag:'核心', desc:'抛售时"反向吸金"；适合核心配置抗风险。',                              etf:'红利 ETF (510880)、央企 ETF'},
+    {n:'地产链',             perf:'↑↑',  cls:'hot', tag:'逢低', desc:'限购放松 + 利率下调推动超跌反弹。可逢低布局，警惕修复后再调整。',     etf:'地产链 ETF'},
+    {n:'出口链',             perf:'→',   cls:'cold', tag:'观望', desc:'美联储加息 + 全球需求不确定，重点看内需替代。',                       etf:'谨慎观望'},
+    {n:'资源与黄金',         perf:'↑↑',  cls:'hot', tag:'核心', desc:'钢材 / 煤炭 / 有色表现突出；通胀预期 → 黄金吸金。',                  etf:'有色 ETF、黄金 ETF (518880)'}
+  ],
+  juneWatch:[
+    {n:'5 月经济高频数据', obs:'PMI / 进出口 / 物价',     meaning:'国内复苏成色，决定低估值修复持续性',          freq:'月度', cls:'m'},
+    {n:'5 月信贷与社融',    obs:'社融增速、新增贷款',      meaning:'信用扩张 → 大盘 + 周期股动力',              freq:'月度', cls:'m'},
+    {n:'地产政策落地',     obs:'限购放松 / 利率调整',     meaning:'地产链反弹的真实弹性',                     freq:'事件', cls:'w'},
+    {n:'美联储 6 月会议',  obs:'声明 / 点阵图 / 鲍威尔讲话', meaning:'美债收益率 + 全球流动性方向',           freq:'事件', cls:'w'},
+    {n:'美国 5 月 CPI',     obs:'CPI / 核心 CPI',          meaning:'美联储路径，对成长股估值高敏感',          freq:'月度', cls:'m'},
+    {n:'美国非农就业',      obs:'就业新增 / 失业率',       meaning:'美元 + 风险偏好方向',                    freq:'月度', cls:'m'},
+    {n:'北向资金动向',     obs:'沪深股通净流入',          meaning:'外资偏好 + 配置节奏',                    freq:'每日', cls:'w'},
+    {n:'MLF / OMO 操作',    obs:'央行公开市场操作',        meaning:'国内流动性边际',                        freq:'事件', cls:'w'},
+    {n:'两市成交量',       obs:'两市日均成交',            meaning:'资金活跃度 / 趋势性 vs 主题轮动',         freq:'每日', cls:'w'},
+    {n:'融资余额',          obs:'两融余额变化',            meaning:'杠杆资金风险偏好',                      freq:'每日', cls:'w'},
+    {n:'欧美主要股指',     obs:'标普 / 纳指 / 欧股',       meaning:'外部风险偏好传染',                      freq:'每日', cls:'w'},
+    {n:'大宗商品价格',     obs:'铜 / 原油 / 黄金',         meaning:'通胀预期 + 周期股盈利弹性',              freq:'每日', cls:'w'}
+  ],
+  juneRisks:[
+    {h:'短期（下旬-6月）',     cls:'short',  txt:'全球流动性突变 + 资金流向反转 → 高估值科技、AI主题ETF最先受冲击。'},
+    {h:'短期 · 美债',           cls:'short',  txt:'美 CPI 若持续高企，10yT 进一步上行 → 压制 A 股高估值板块估值。'},
+    {h:'短期 · 主题过热',       cls:'short',  txt:'AI、芯片"羊群效应"一致做多 → 一致平仓时回调剧烈。'},
+    {h:'中期（季度-年中）',     cls:'mid',    txt:'政策兑现不及预期（地产松绑、稳增长）→ 价值修复行情中断。'},
+    {h:'中期 · 业绩兑现',       cls:'mid',    txt:'上半年提前预期的科技 / 周期，若中报不达预期 → 大幅调整。'},
+    {h:'中期 · 人民币',         cls:'mid',    txt:'美元持续强势 → 人民币贬值预期 → 外资流出 + 进口成本上升。'},
+    {h:'系统性 · 地缘',         cls:'long',   txt:'中美关系、中东冲突等不可测事件 → 全球风险偏好骤降。'},
+    {h:'系统性 · 全球周期',     cls:'long',   txt:'全球宽松周期终结、国内需求未实质起色 → 估值与盈利双杀。'}
+  ]
+};
+
+/* ====== H2 2026 数据 ====== */
+const H2_DATA = {
+  scenarios:[
+    {n:'① 弱复苏 + 政策托底', cls:'hot', tag:'防御', desc:'经济缓慢回升 + 政策面积极发力。结构性机会落在低估值板块。', sectors:'银行、央企、公用事业、家电、消费券类', risk:'政策托底力度不及预期 / 地产深度下滑'},
+    {n:'② 流动性改善 + 风险偏好', cls:'hot', tag:'成长', desc:'美联储降息预期 + 人民币稳定 + 资金面宽松 → 风险偏好上升。', sectors:'科创 50、创业板、半导体、AI、数据中心、机器人、低空经济', risk:'成长泡沫 + 美元反弹快速回调'},
+    {n:'③ 出口 / 制造周期修复', cls:'hot', tag:'周期', desc:'全球经济稳健复苏 → 中国出口与制造业加速。', sectors:'高端装备、工程机械、汽车零部件、家电、电子、船舶', risk:'美元走强 → 资本流入受压'},
+    {n:'④ 全球商品价格上行', cls:'hot', tag:'资源', desc:'全球再通胀或大宗供需偏紧。资源 / 能源板块成为最大赢家。', sectors:'黄金、铜铝稀土、油气煤炭、大宗化工', risk:'国内通胀回升 → 货币政策收敛'},
+    {n:'⑤ 消费信心修复', cls:'neutral', tag:'修复', desc:'下半年消费回暖快于预期 → 可选消费与服务补涨。', sectors:'白酒、旅游酒店、免税、化妆品、医美、影视游戏', risk:'消费复苏疲弱 / 刺激政策落空'}
+  ],
+  themes:[
+    {rank:1, n:'人工智能与算力',    perf:'↑↑↑', cls:'hot', stage:'主升期',     logic:'AI + 数据中心需求持续释放（大模型商用、东数西算）；政策支持；海外龙头带动。', etf:'华夏 AI ETF、算力 ETF',     advice:'加配',   risk:'全球科技竞争 / 监管 / 落地进度'},
+    {rank:2, n:'半导体 / 芯片',       perf:'↑↑',  cls:'hot', stage:'主升末期', logic:'国产替代 + 供给恢复双驱动；政策持续支持集成电路。欧美厂商扩产提振全球需求。', etf:'半导体产业 ETF、上证半导体 ETF', advice:'分批建仓', risk:'供应链 / 技术瓶颈 / 美出口管制'},
+    {rank:3, n:'新能源车 / 锂电',     perf:'↑↑',  cls:'hot', stage:'主升期',   logic:'2026 销量预计 1,900 万辆；中国品牌国际竞争力增强；电池 / 锂资源长期需求旺盛。', etf:'新能源汽车 ETF、锂电池 ETF', advice:'中线持有', risk:'补贴退坡加速 / 国际竞争 / 充电基建'},
+    {rank:4, n:'新能源发电 / 电网',  perf:'↑',   cls:'hot', stage:'启动 / 低位', logic:'"东数西算"绿电直供 + "十四五"新能源占比承诺。光伏装机扩张 + 风电海上规模化 + 电网智能化。', etf:'风能 ETF、光伏 ETF、电网 ETF', advice:'中长期布局', risk:'补贴政策调整 / 终端需求 / 利率上升'},
+    {rank:5, n:'先进制造 / 机器人',  perf:'↑',   cls:'hot', stage:'启动期',   logic:'制造强国 + 智能制造 + 工业互联网；5G/IoT 设备出口双增长；机器人国产化提速。', etf:'机器人 ETF、工业 4.0 主题 ETF', advice:'中线配置', risk:'全球贸易摩擦 / 核心零部件受制'},
+    {rank:6, n:'周期与资源（大宗）',perf:'↑↑',  cls:'hot', stage:'主升期',   logic:'全球经济复苏 + 中国基建维持 + 稀缺资源（锂、稀土）供给收紧。', etf:'有色金属 ETF、商品 ETF、黄金 ETF', advice:'适度配置', risk:'全球增速放缓 / 需求不及预期'},
+    {rank:7, n:'金融红利 / 防御',     perf:'→',   cls:'neutral', stage:'启动期',  logic:'宽松货币 + "反内卷"政策助力盈利；高股息红利吸引配置。', etf:'银行 ETF、红利低波 ETF、基建 ETF', advice:'长线底仓', risk:'国内信用风险 / 全球利率上行'},
+    {rank:8, n:'消费与医疗',           perf:'→',   cls:'neutral', stage:'低位修复',logic:'内需刺激 + 老龄化推升医药 / 银发经济需求；消费升级 + 龙头白酒竞争力强。', etf:'消费 ETF、医药 ETF、旅游 ETF', advice:'配置型',   risk:'收入增长乏力 / 医药价格管控'}
+  ],
+  portfolios:{
+    steady:{
+      name:'稳健型组合', goal:'控制波动 + 稳健收益', core:'60-70% / 20-30%', cash:'10%', env:'大盘承压 / 波动加剧', tag:'STEADY PORTFOLIO',
+      rationale:'价值防御为基石。沪深 300 / 央企 / 银行 / 红利低波 / 公用事业为核心；适量科技 / 周期作配置性；短债 / 货币 ETF 对冲。沪深 300 / 银行触底 + 风险偏好回升 = 增加周期或科技。',
+      holdings:[
+        {n:'沪深 300 ETF',       v:25, cls:'def'},
+        {n:'央企 / 银行 ETF',    v:15, cls:'def'},
+        {n:'红利低波 ETF',       v:15, cls:'def'},
+        {n:'公用事业 ETF',       v:5,  cls:'def'},
+        {n:'中证 500 / MSCI中国', v:10, cls:'growth'},
+        {n:'科技 50 / 半导体 ETF',v:10, cls:'growth'},
+        {n:'有色 ETF',           v:10, cls:'cyc'},
+        {n:'短债 / 货币 ETF',     v:10, cls:'def'}
+      ],
+      trigger:'触发：沪深 300 / 银行 ETF 跌破 200 日均线 → 止盈减仓。10% 债券仓位常备，控最大回撤。'
+    },
+    balanced:{
+      name:'平衡型组合', goal:'兼顾防御与成长', core:'权益 70-80% / 债券 20-30%', cash:'20-30%', env:'风险偏好中性 + 风格轮动快', tag:'BALANCED PORTFOLIO',
+      rationale:'宽基为底，主题为翼。沪深 300 + 中证 500 = 宽基核心；创业板 / 科创 50 = 弹性卫星；半导体 / AI / 消费电子 = 行业卫星；红利 / 医药 / 消费 = 防御平衡。组合整体止损阈值 10%。',
+      holdings:[
+        {n:'沪深 300 ETF',          v:25, cls:'def'},
+        {n:'中证 500 ETF',          v:15, cls:'growth'},
+        {n:'创业板 / 科创 50 ETF',  v:10, cls:'growth'},
+        {n:'半导体 / AI / 消费电子 ETF', v:10, cls:'growth'},
+        {n:'红利 / 医药 / 消费 ETF',v:10, cls:'def'},
+        {n:'军工 / 医疗主题 ETF',   v:5,  cls:'growth'},
+        {n:'国债 ETF',              v:15, cls:'def'},
+        {n:'货币 / 短债 ETF',       v:10, cls:'def'}
+      ],
+      trigger:'触发：科技板块连续上涨偏离基本面 → 减仓主题。组合回撤 10% → 系统性减仓。'
+    },
+    aggressive:{
+      name:'进攻型组合', goal:'追求主题行情与成长弹性', core:'成长 60-70% / 基础 20-30%', cash:'10-20%', env:'全球宽松 + 风险偏好高企 + 题材爆发期', tag:'AGGRESSIVE PORTFOLIO',
+      rationale:'重度布局热点赛道。科创 50 / 创业板 / 半导体 / AI / 机器人 / 新能源 ETF 各 5-10%；宽基 + 周期作对冲；防御小比例。严守止盈：单主题涨 30-50% 后分批兑现；跟踪融资融券与北向，必要时果断防守。',
+      holdings:[
+        {n:'科创 50 ETF',           v:10, cls:'growth'},
+        {n:'创业板 50 ETF',         v:10, cls:'growth'},
+        {n:'半导体 ETF',            v:10, cls:'growth'},
+        {n:'人工智能 ETF',          v:10, cls:'growth'},
+        {n:'机器人 / 工业 4.0 ETF',v:10, cls:'growth'},
+        {n:'新能源车 ETF',          v:10, cls:'growth'},
+        {n:'上证 50 / 中证 500 ETF',v:10, cls:'def'},
+        {n:'有色 / 能源 ETF',       v:10, cls:'cyc'},
+        {n:'集成电路宽基 ETF',     v:5,  cls:'growth'},
+        {n:'国债 / 货币 ETF',       v:15, cls:'def'}
+      ],
+      trigger:'触发：科创 50 创历史新高并快速回落 → 大幅减仓。资金流向逆转（北向大幅净流出）→ 转防御。'
+    }
+  },
+  tracks:[
+    {cat:'macro',  n:'PMI（制造业/服务业）', meaning:'>50 或大幅上升 = 经济扩张信号，利风险偏好；持续 <50 或下滑 → 防守', freq:'月度'},
+    {cat:'macro',  n:'社融 / 信贷增速',       meaning:'增速上升 = 流动性宽松，股市反弹；持续下滑 = 市场承压',         freq:'月度'},
+    {cat:'macro',  n:'M1 / M2 增速',          meaning:'M1 反弹 = 实体经济活跃，加仓信号；M2 放缓 → 边际收紧',          freq:'月度'},
+    {cat:'macro',  n:'CPI / PPI',              meaning:'PPI 由负转正 = 通胀回暖，利周期商品 / 压消费；持续低通胀 = 宽松延续', freq:'月度'},
+    {cat:'macro',  n:'出口 / 地产销售',        meaning:'出口大增 = 外需复苏，利制造；地产销售转正 = 政策见效前瞻',        freq:'月度'},
+    {cat:'macro',  n:'人民币汇率 / 美元利差', meaning:'人民币贬值加速 / 美元利率高企 = 北向流出压力',                 freq:'每周'},
+    {cat:'market', n:'指数趋势（关键位）',    meaning:'创业板创新高 = 上攻强；沪指跌破年线 = 风险加大',                 freq:'每日'},
+    {cat:'market', n:'成交额 / 换手率',        meaning:'连续萎缩或换手下降 = 反弹乏力；放量上涨 = 延续',                  freq:'每日'},
+    {cat:'market', n:'融资融券余额',          meaning:'快速增长 = 高杠杆 / 泡沫风险；快速下降或长期高位 = 风险将至',     freq:'每日'},
+    {cat:'market', n:'ETF 净流入',             meaning:'某类 ETF 持续大量净流入 = 警惕主题过热 + 准备减仓',             freq:'每日'},
+    {cat:'market', n:'北向资金动向',           meaning:'加大买入 = 利好板块；突然大量撤出 = 警惕逆转',                   freq:'每日'},
+    {cat:'theme',  n:'AI / 算力订单',          meaning:'大模型合作 + 数据中心项目 = AI 投资强度；算力 / 电力订单激增 = 爆发期', freq:'季度'},
+    {cat:'theme',  n:'半导体国产化进程',       meaning:'国家芯片项目 / 进口替代政策落实 = 半导体趋势信号',               freq:'季度'},
+    {cat:'theme',  n:'机器人 / 工业 4.0 订单', meaning:'机器人企业订单 + 工业自动化投资增速 = 制造升级节奏',            freq:'季度'},
+    {cat:'theme',  n:'东数西算 + 新能源',     meaning:'西部绿电上网率 + 光伏装机 + 储能签单 = 新能源需求量化',         freq:'季度'},
+    {cat:'theme',  n:'铜 / 金 / 稀土价格',    meaning:'国际大宗单边上涨 = 资源股行情前瞻；回落 → 调整资源配置',         freq:'每日'},
+    {cat:'theme',  n:'消费数据（社零 / 餐饮 / 旅游）', meaning:'结构改善 = 消费板块动能恢复',                          freq:'月度'},
+    {cat:'theme',  n:'医疗政策动向',           meaning:'医保目录调整 + 药企谈判 = 影响医药股预期',                       freq:'事件'}
+  ]
+};
+
 const DATA = {
   indexes:[
     {name:'创业板指', val:100.9, color:'#9E1A2D'},
@@ -704,6 +1351,206 @@ const DATA = {
     {n:'出口增速',               obs:'进出口贸易总额同比',         meaning:'下游需求 + 制造业影响',           src:'海关总署',      freq:'m'}
   ]
 };
+
+/* ===== 5 月专属渲染 ===== */
+(function renderMayTimeline(){
+  const root = document.getElementById('may-timeline');
+  if(!root) return;
+  MAY_DATA.timeline.forEach(t=>{
+    const c = document.createElement('div');
+    c.className = 'theme-card ' + t.cls;
+    c.innerHTML = `
+      <div class="theme-h">
+        <span class="theme-name">${t.phase}</span>
+        <span class="theme-tag ${t.cls==='hot'?'hot':'cold'}">${t.tag}</span>
+      </div>
+      <div class="theme-desc">${t.text}</div>`;
+    root.appendChild(c);
+  });
+})();
+
+(function renderMayFlows(){
+  const root = document.getElementById('may-flows');
+  if(!root) return;
+  MAY_DATA.flows.forEach(f=>{
+    const c = document.createElement('div');
+    c.className = 'theme-card ' + f.cls;
+    c.innerHTML = `
+      <div class="theme-h">
+        <span class="theme-name">${f.n}</span>
+        <span class="theme-tag ${f.cls==='hot'?'hot':'cold'}">${f.tag}</span>
+      </div>
+      <div class="theme-perf ${f.cls==='hot'?'up':'down'}">${f.primary}</div>
+      <div class="theme-desc">${f.detail}</div>
+      <div class="theme-etf"><b>含义：</b>${f.note}</div>`;
+    root.appendChild(c);
+  });
+})();
+
+(function renderMayThemes(){
+  const root = document.getElementById('may-themes');
+  if(!root) return;
+  MAY_DATA.themes.forEach(t=>{
+    const c = document.createElement('div');
+    c.className = 'theme-card ' + t.cls;
+    const tagCls = t.tag==='拥挤'?'hot':t.tag==='回避'?'cold':t.tag==='观望'?'cold':t.tag==='底仓'?'neutral':'warm';
+    const perfCls = t.cls==='hot'?'up':t.cls==='cold'?'down':'flat';
+    c.innerHTML = `
+      <div class="theme-h">
+        <span class="theme-name">${t.n}</span>
+        <span class="theme-tag ${tagCls}">${t.tag}</span>
+      </div>
+      <div class="theme-perf ${perfCls}">${t.perf}</div>
+      <div class="theme-desc">${t.desc}</div>
+      <div class="theme-etf">代表：<b>${t.etf}</b></div>`;
+    root.appendChild(c);
+  });
+})();
+
+(function renderJuneWatch(){
+  const root = document.getElementById('june-watch');
+  if(!root) return;
+  MAY_DATA.juneWatch.forEach(m=>{
+    const i = document.createElement('div');
+    i.className = `mon-item freq-${m.cls==='w'?'weekly':'monthly'}`;
+    i.innerHTML = `
+      <div class="mon-h"><span>${m.n}</span><span class="mon-freq ${m.cls}">${m.freq}</span></div>
+      <div><b>观察：</b>${m.obs}</div>
+      <div style="margin-top:4px"><b>含义：</b>${m.meaning}</div>`;
+    root.appendChild(i);
+  });
+})();
+
+(function renderJuneRisks(){
+  const root = document.getElementById('june-risks');
+  if(!root) return;
+  MAY_DATA.juneRisks.forEach(r=>{
+    const i = document.createElement('div');
+    const borderColor = r.cls==='short'?'var(--up)':r.cls==='mid'?'var(--gold)':'var(--navy)';
+    i.className = 'mon-item';
+    i.style.borderLeftColor = borderColor;
+    const tagBg = r.cls==='short'?'var(--up)':r.cls==='mid'?'var(--gold)':'var(--navy)';
+    i.innerHTML = `
+      <div class="mon-h"><span>${r.h}</span><span class="mon-freq" style="background:${tagBg}">${r.cls==='short'?'短':r.cls==='mid'?'中':'长'}</span></div>
+      <div>${r.txt}</div>`;
+    root.appendChild(i);
+  });
+})();
+
+/* ===== H2 2026 渲染 ===== */
+(function renderH2Scenarios(){
+  const root = document.getElementById('h2-scenarios');
+  if(!root) return;
+  H2_DATA.scenarios.forEach(s=>{
+    const c = document.createElement('div');
+    c.className = 'theme-card ' + s.cls;
+    c.innerHTML = `
+      <div class="theme-h">
+        <span class="theme-name">${s.n}</span>
+        <span class="theme-tag ${s.cls==='hot'?'hot':'neutral'}">${s.tag}</span>
+      </div>
+      <div class="theme-desc">${s.desc}</div>
+      <div class="theme-etf"><b>受益方向：</b>${s.sectors}</div>
+      <div class="theme-etf" style="color:var(--down-deep)"><b>风险：</b>${s.risk}</div>`;
+    root.appendChild(c);
+  });
+})();
+
+(function renderH2Themes(){
+  const grid = document.getElementById('h2-themes');
+  const tbody = document.getElementById('h2-themes-tbody');
+  if(!grid || !tbody) return;
+  H2_DATA.themes.forEach(t=>{
+    const c = document.createElement('div');
+    c.className = 'theme-card hot';
+    c.innerHTML = `
+      <div class="theme-h">
+        <span class="theme-name"><b style="color:var(--gold);font-family:'Noto Serif SC';font-size:18px;margin-right:6px">${t.rank}</b>${t.n}</span>
+        <span class="theme-tag hot">${t.stage}</span>
+      </div>
+      <div class="theme-perf up">${t.perf}</div>
+      <div class="theme-desc">${t.logic}</div>
+      <div class="theme-etf">代表：<b>${t.etf}</b></div>`;
+    grid.appendChild(c);
+
+    const tr = document.createElement('tr');
+    tr.innerHTML = `<td><b style="color:var(--gold);font-family:'Noto Serif SC';font-size:16px">${t.rank}</b></td><td><b>${t.n}</b></td><td>${t.stage}</td><td>${t.logic}</td><td>${t.etf}</td><td><span class="perf-up">${t.advice}</span></td>`;
+    tbody.appendChild(tr);
+  });
+})();
+
+/* 三套 H2 组合 */
+function renderH2Portfolio(key){
+  const p = H2_DATA.portfolios[key];
+  document.getElementById('h2-pf-name').textContent = p.name;
+  document.getElementById('h2-pf-goal').textContent = p.goal;
+  document.getElementById('h2-pf-core').textContent = p.core;
+  document.getElementById('h2-pf-cash').textContent = p.cash;
+  document.getElementById('h2-pf-env').textContent = p.env;
+  document.getElementById('h2-pf-rationale').textContent = p.rationale;
+  document.getElementById('h2-pf-tag').textContent = p.tag;
+  document.getElementById('h2-pf-trigger').innerHTML = `<b style="color:var(--up-deep)">⚡ </b>${p.trigger}`;
+  const root = document.getElementById('h2-pf-holdings');
+  root.innerHTML = '';
+  const max = Math.max(...p.holdings.map(h=>h.v));
+  p.holdings.forEach(h=>{
+    const row = document.createElement('div');
+    row.style.cssText = 'display:grid;grid-template-columns:160px 1fr 50px;gap:12px;align-items:center;font-size:13px';
+    const grad = h.cls==='def' ? 'linear-gradient(90deg,var(--down) 0%,#6BBF7D 100%)'
+              : h.cls==='growth' ? 'linear-gradient(90deg,var(--up) 0%,#F25C70 100%)'
+              : 'linear-gradient(90deg,var(--gold) 0%,#E5C988 100%)';
+    row.innerHTML = `
+      <span style="color:var(--ink-2);font-weight:500">${h.n}</span>
+      <div style="height:22px;background:#F2EDDF;border:1px solid var(--line)"><span style="display:block;height:100%;width:${(h.v/max*100).toFixed(1)}%;background:${grad}"></span></div>
+      <span style="text-align:right;font-family:'Noto Serif SC';font-weight:700;color:var(--navy)">${h.v}%</span>`;
+    root.appendChild(row);
+  });
+}
+renderH2Portfolio('steady');
+document.querySelectorAll('#h2-pf-switcher .pf-tab').forEach(tab=>{
+  tab.addEventListener('click', ()=>{
+    document.querySelectorAll('#h2-pf-switcher .pf-tab').forEach(t=>{
+      t.classList.remove('active');
+      t.style.background = 'var(--paper)';
+      t.style.color = 'var(--navy)';
+    });
+    tab.classList.add('active');
+    tab.style.background = 'var(--navy)';
+    tab.style.color = '#fff';
+    renderH2Portfolio(tab.dataset.pf);
+  });
+});
+// init active style
+const initTab = document.querySelector('#h2-pf-switcher .pf-tab.active');
+if(initTab){ initTab.style.background='var(--navy)'; initTab.style.color='#fff'; }
+
+/* H2 跟踪指标 */
+function renderH2Tracks(filter){
+  const root = document.getElementById('h2-tracks');
+  if(!root) return;
+  root.innerHTML = '';
+  const list = filter==='all' ? H2_DATA.tracks : H2_DATA.tracks.filter(t=>t.cat===filter);
+  const catColor = {macro:'var(--gold)', market:'var(--up)', theme:'var(--navy)'};
+  const catLabel = {macro:'宏观', market:'市场', theme:'题材'};
+  list.forEach(t=>{
+    const i = document.createElement('div');
+    i.className = 'mon-item';
+    i.style.borderLeftColor = catColor[t.cat];
+    i.innerHTML = `
+      <div class="mon-h"><span>${t.n}</span><span class="mon-freq" style="background:${catColor[t.cat]}">${catLabel[t.cat]}</span></div>
+      <div style="margin-top:4px">${t.meaning}</div>
+      <div class="mon-meta">频率：${t.freq}</div>`;
+    root.appendChild(i);
+  });
+}
+renderH2Tracks('all');
+document.querySelectorAll('#h2-track-tabs .sub-tab').forEach(tab=>{
+  tab.addEventListener('click', ()=>{
+    document.querySelectorAll('#h2-track-tabs .sub-tab').forEach(t=>t.classList.remove('active'));
+    tab.classList.add('active');
+    renderH2Tracks(tab.dataset.cat);
+  });
+});
 
 /* 指数图 */
 new Chart(document.getElementById('chart-indexes'), {
@@ -830,6 +1677,473 @@ window.addEventListener('scroll', ()=>{
   for(const s of sections){ if(s.offsetTop <= top) active = s; }
   tabs.forEach(t=> t.classList.toggle('active', t.dataset.target === active.id));
 });
+
+/* ====================================================================== */
+/* ========== 指数百科 · INDEX ENCYCLOPEDIA  · 弹窗系统 ============= */
+/* ====================================================================== */
+const INDEX_INFO = {
+  shanghai: {
+    name:'上证综合指数', short:'上证综指', code:'000001', cat:'broad',
+    issuer:'上海证券交易所', type:'宽基 · 大盘价值',
+    universe:'上交所全部 A 股 + 红筹存托凭证（剔除 ST / *ST）',
+    sample:'数千只（全市场样本）',
+    industry:'金融、能源、地产等传统板块权重高（银行、保险、石油、电力）；少数大型国企集中',
+    style:'大盘价值；波动较低、防御性强',
+    growth:'低', volatility:'低', yieldR:'高',
+    purpose:'反映上交所整体表现；防御性配置工具；宏观防御周期通常表现抗跌',
+    investors:'稳健型、价值型',
+    repETF:'上证指数 ETF（场内追踪标的较多，通常以沪深 300 / 上证 50 作为蓝筹替代）',
+    note:'权重集中于少数大型国企，行业结构偏传统经济（能源、地产、金融）',
+    macro:'经济下行 / 紧缩末期 / 利率上行预期下防御阶段表现稳健'
+  },
+  shenzhen: {
+    name:'深证成份指数', short:'深证成指', code:'399001', cat:'broad',
+    issuer:'深圳证券交易所', type:'宽基 · 中盘成长',
+    universe:'深交所主板 A 股（非 ST、上市 ≥ 半年）',
+    sample:'500 只规模大、流动性好的股票',
+    industry:'民营 + 成长性企业为主：电子、通信、医疗居多；金融权重低',
+    style:'中盘成长，弹性大于上证综指',
+    growth:'中-高', volatility:'中', yieldR:'低',
+    purpose:'代表深市主板走势；中小市值成长型企业配置工具',
+    investors:'平衡型 + 部分成长型',
+    repETF:'深证成指 ETF（159901 等）',
+    note:'深圳金融股偏少，民营 / 制造业 / 科技板块集中；对市场情绪更敏感',
+    macro:'景气扩张、流动性宽松、出口好转期表现较强'
+  },
+  chinext: {
+    name:'创业板指', short:'创业板指', code:'399006', cat:'broad',
+    issuer:'深圳证券交易所', type:'宽基 · 大盘成长',
+    universe:'深交所创业板非 ST 股（上市 > 6 月）',
+    sample:'100 只（样本满 100 后锁定）',
+    industry:'新能源、医药、科技等"新经济"为主；高估值高成长',
+    style:'大盘成长，弹性高、波动大',
+    growth:'很高', volatility:'很高', yieldR:'低',
+    purpose:'把握中国新兴产业机会；阶段性进攻 / 趋势跟随',
+    investors:'高风险偏好型；成长主线',
+    repETF:'创业板 ETF (159915)、创业板 50 ETF (159949)',
+    note:'反映创新型中小盘股；牛市领涨、熊市跌幅大；震荡市波动最剧烈',
+    macro:'宽松货币 + 风险偏好上升 + 产业政策（半导体 / 新能源等）刺激'
+  },
+  star50: {
+    name:'科创板 50 指数', short:'科创 50', code:'000688', cat:'broad',
+    issuer:'上海证券交易所', type:'硬科技 · 大盘成长',
+    universe:'科创板上市公司中市值最大、流动性最好的 50 只',
+    sample:'50 只（单只 ≤ 10%，前五合计 ≤ 40%）',
+    industry:'半导体、集成电路、高端制造、新材料、AI 等"硬科技"',
+    style:'硬科技成长；估值溢价高、Beta 极大',
+    growth:'极高', volatility:'极高', yieldR:'低',
+    purpose:'科创板核心龙头跟踪；纯科技主题（半导体 / 算力周期）进攻配置',
+    investors:'超高风险偏好型；科技主题',
+    repETF:'科创 50 ETF (588000)、科创板 50 ETF (588080)',
+    note:'比创业板更偏硬科技、大市值；不适合作为防御配置',
+    macro:'美联储转鸽 + 全球流动性宽松 + 半导体 / AI 周期上行时表现极强'
+  },
+  csi300: {
+    name:'沪深 300 指数', short:'沪深 300', code:'000300', cat:'broad',
+    issuer:'中证指数公司', type:'宽基 · 大盘均衡',
+    universe:'沪深市场全部 A 股（市值 + 流动性筛选）',
+    sample:'300 只（沪 / 深 ≈ 6:4 分布）',
+    industry:'大盘蓝筹为主：银行、券商、地产、能源、白酒等',
+    style:'大盘均衡；估值居中；单只 ≤ 10%，前十合计 ~20%',
+    growth:'中', volatility:'中', yieldR:'高',
+    purpose:'A 股核心资产代表；长期核心仓位 / 大盘风格轮动基石',
+    investors:'多数投资者（适合作为核心仓位）',
+    repETF:'沪深 300 ETF (510300、159919)',
+    note:'市值覆盖率约 60%；行业最分散的大盘宽基',
+    macro:'复苏初期 / 政策稳增长 / 利率回落环境表现稳健'
+  },
+  csi500: {
+    name:'中证 500 指数', short:'中证 500', code:'000905', cat:'broad',
+    issuer:'中证指数公司', type:'宽基 · 中盘成长',
+    universe:'沪深 A 股剔除沪深 300 + 市值前 300 后的剩余股份',
+    sample:'500 只（剔除流动性最低 20% 后市值排名）',
+    industry:'制造业、科技成长企业（工业、可选消费、信息技术）；金融权重低',
+    style:'中盘成长；景气扩张期跑赢大盘',
+    growth:'高', volatility:'高', yieldR:'低',
+    purpose:'增长配置 / 风格轮动；中盘价值代表，估值修复行情布局',
+    investors:'高风险偏好型',
+    repETF:'中证 500 ETF (510500、510510)',
+    note:'介于大盘 300 和小盘 1000 之间；制造 + 科技占比高；金融权重低',
+    macro:'景气扩张初期、并购重组 / 专精特新政策、风格转中盘时领涨'
+  },
+  csi1000: {
+    name:'中证 1000 指数', short:'中证 1000', code:'000852', cat:'broad',
+    issuer:'中证指数公司', type:'宽基 · 小盘成长',
+    universe:'沪深全市场剔除中证 800（沪深 300 + 中证 500）后的小市值股票',
+    sample:'1000 只小盘流动性较好的股票',
+    industry:'小盘 / 微盘股；制造、消费、TMT 分散',
+    style:'小盘成长；对经济与风格变化敏感',
+    growth:'很高', volatility:'很高', yieldR:'低',
+    purpose:'弹性交易 / 阶段性配置；赚钱效应扩散期受益',
+    investors:'激进型、机会型',
+    repETF:'中证 1000 ETF (560010、512100)',
+    note:'小盘股占比比中证 500 更大；高弹性、高波动',
+    macro:'资金宽松末期 / 政策刺激 / 题材活跃期表现突出'
+  },
+  csi2000: {
+    name:'中证 2000 指数', short:'中证 2000', code:'932000', cat:'broad',
+    issuer:'中证指数公司', type:'宽基 · 微盘成长',
+    universe:'剔除中证 800 + 中证 1000 后的最小市值股票',
+    sample:'2000 只市值最小股票',
+    industry:'极小市值成长 / 题材股',
+    style:'微盘成长；极高波动、极高弹性',
+    growth:'极高', volatility:'极高', yieldR:'低',
+    purpose:'题材套利；短线波段 / 风格扩散末段',
+    investors:'投机型、主题型',
+    repETF:'中证 2000 ETF（场内品种较少，可观察）',
+    note:'高波动高风险；不适合长期核心仓位，仅作微盘卫星 / 题材配置',
+    macro:'流动性极宽 + 风险偏好极高 + 主题轮动期'
+  },
+  sse50: {
+    name:'上证 50 指数', short:'上证 50', code:'000016', cat:'broad',
+    issuer:'上交所 + 中证公司', type:'宽基 · 大盘价值',
+    universe:'上证 180 范围（沪市蓝筹池）',
+    sample:'50 只市值、流动性最优股票',
+    industry:'金融、石油、基建等龙头股权重大；央企 / 国企集中',
+    style:'大盘价值；波动比沪深 300 更低；代表性最强',
+    growth:'低', volatility:'低', yieldR:'高',
+    purpose:'价值修复 / 防御策略；低估值蓝筹配置工具',
+    investors:'稳健型、价值型',
+    repETF:'上证 50 ETF (510050)',
+    note:'代表沪市最具影响力的龙头蓝筹（大行、国企、大白马）；估值最低、波动最小',
+    macro:'风险偏好下降 / 利率上行 / 避险情绪高涨时受青睐'
+  },
+  csiA50: {
+    name:'中证 A50 指数', short:'中证 A50', code:'930050', cat:'broad',
+    issuer:'中证指数公司', type:'宽基 · 大盘龙头',
+    universe:'全部 A 股（不限沪 / 深）',
+    sample:'各行业市值最大的 50 只（行业最少一只 → 行业均衡）',
+    industry:'覆盖沪深各行业头部龙头；包括科技 / 消费等新经济',
+    style:'大盘龙头；单只 ≤ 10%；比上证 50 更国际化、扁平化',
+    growth:'中偏上', volatility:'中', yieldR:'中',
+    purpose:'核心 / 价值兼顾；A 股核心资产 + 大盘蓝筹跟踪',
+    investors:'核心仓位型',
+    repETF:'中证 A50 ETF (563000 等)',
+    note:'兼具成长与估值优势；适合作为关注 A 股核心资产的工具',
+    macro:'稳增长 + 沪深均衡风格期表现稳健'
+  },
+  bse50: {
+    name:'北证 50 指数', short:'北证 50', code:'899050', cat:'broad',
+    issuer:'北京证券交易所', type:'北交所 · 小盘创新',
+    universe:'北交所上市的全部公司',
+    sample:'50 家市值最大 / 流动性最佳企业',
+    industry:'原新三板精选层 + 北交所中小型创新公司',
+    style:'小盘创新；高波动、流动性有限；权重集中（前十超一半）',
+    growth:'很高', volatility:'极高', yieldR:'低',
+    purpose:'微盘主题 / 短期博弈；卫星 / 套利仓位',
+    investors:'激进主题投资者；不适合普通长期 ETF 投资者',
+    repETF:'北证 50 ETF (920050)',
+    note:'更偏"题材 + 政策"属性，适合专注创新经济的微观投机',
+    macro:'主题资金活跃 / "专精特新"政策刺激期'
+  },
+  csiall: {
+    name:'中证全指指数', short:'中证全指', code:'000985', cat:'broad',
+    issuer:'中证指数公司', type:'宽基 · 全市场',
+    universe:'沪深 + 北交所全部合资格股票 / 存托凭证（除 ST / 退市风险）',
+    sample:'近 5,000 只（覆盖 96%+ 市值）',
+    industry:'与 Wind 全 A、国证 A 指类似，最广覆盖',
+    style:'全市场综合；宏观跟踪基准',
+    growth:'中', volatility:'中', yieldR:'中',
+    purpose:'宏观 Beta 暴露；指数化全市场参与；用于宏观跟踪',
+    investors:'资产配置型 / 长期持有',
+    repETF:'中证全指 ETF',
+    note:'北交所 ≥ 2 年、科创板 ≥ 1 年、其他 ≥ 3 月才纳入；代表性最强',
+    macro:'指数化 / 长期持有 / 与 Wind 全 A 类似'
+  },
+  dividend: {
+    name:'中证红利指数', short:'红利指数', code:'000922', cat:'strategy',
+    issuer:'中证指数公司', type:'策略 · 大盘价值 + 低波',
+    universe:'高股息率且持续稳定分红的大型企业',
+    sample:'100 只（过去三年持续现金分红，股息率加权）',
+    industry:'金融、能源、公用事业等稳定派息板块',
+    style:'高股息策略；低波动 + 收益稳健',
+    growth:'低', volatility:'低', yieldR:'高',
+    purpose:'类债基替代；防御 + 分红收益；低利率环境配置高股息资产',
+    investors:'保守型、稳健型、收益型',
+    repETF:'红利 ETF (510880)、红利低波 ETF (515100)',
+    note:'股息率加权；机构抱团蓝筹时受益；高股息策略代表',
+    macro:'低利率环境 / 资金抱团蓝筹 / 避险周期表现突出'
+  },
+  soe: {
+    name:'上证央企 50 / 央企红利', short:'央企指数', code:'000042 等', cat:'strategy',
+    issuer:'上交所 / 中证公司', type:'策略 · 大盘价值 + 政策',
+    universe:'中央国资（国务院国资委 / 财政部）控股上市公司',
+    sample:'50 只（央企龙头）；类似还有中证央企红利、中证国企红利',
+    industry:'能源、电力、重工等低估值价值板块；央企 / 地方国企',
+    style:'大盘价值 + 政策驱动；防御',
+    growth:'低', volatility:'低', yieldR:'高',
+    purpose:'防御 + 价值修复；央企改革主线参与',
+    investors:'收益型、稳健型',
+    repETF:'央企 ETF (519615)、央企红利 ETF',
+    note:'防御性配置或国企调结构受益；常用于价值修复或避险阶段',
+    macro:'央企改革 / 政策刺激 / 防御阶段'
+  },
+  semi: {
+    name:'中证半导体产业指数', short:'半导体指数', code:'931865', cat:'theme',
+    issuer:'中证指数公司', type:'行业主题 · 硬科技',
+    universe:'半导体核心公司',
+    sample:'不超过 40 家',
+    industry:'半导体 / 集成电路 / 芯片设备 / 材料',
+    style:'细分高成长；行业集中度高，弹性极大',
+    growth:'极高', volatility:'极高', yieldR:'低',
+    purpose:'科技主题、波段交易；半导体周期 / 国产替代行情配置',
+    investors:'投机型、主题型',
+    repETF:'半导体 ETF (512480)、芯片 ETF (159995)',
+    note:'与全球半导体周期强相关；制裁 / 国产替代政策催化',
+    macro:'美联储转鸽 + 半导体周期上行 + 国产替代政策'
+  },
+  newenergy: {
+    name:'中证内地新能源主题', short:'新能源指数', code:'000941', cat:'theme',
+    issuer:'中证指数公司', type:'行业主题 · 新能源',
+    universe:'内地新能源产业链公司',
+    sample:'50 家（太阳能、风能、新能源汽车等）',
+    industry:'光伏 / 风电 / 储能 / 新能源车 / 锂电池',
+    style:'细分高成长；产业政策驱动',
+    growth:'极高', volatility:'高', yieldR:'低',
+    purpose:'能源转型、成长板块；新能源主线长期布局',
+    investors:'成长型、主题型',
+    repETF:'新能源 ETF (516160)、新能车 ETF (159806)、光伏 ETF (159691)',
+    note:'碳中和 + 渗透率提升长期受益；注意补贴退坡 / 价格竞争',
+    macro:'政策扶持期 + 全球能源转型加速'
+  },
+  ai: {
+    name:'中证人工智能主题', short:'AI 主题', code:'930713', cat:'theme',
+    issuer:'中证指数公司', type:'行业主题 · 硬科技',
+    universe:'涉足 AI 基础硬件与软件的公司',
+    sample:'50 家',
+    industry:'AI 算力 / 大模型 / 数据中心 / 计算机 / 通信',
+    style:'细分高成长；情绪 + 政策驱动；估值弹性高',
+    growth:'极高', volatility:'极高', yieldR:'低',
+    purpose:'科技主题、周期行情；AI 浪潮跟随',
+    investors:'高风险偏好型',
+    repETF:'AI ETF (515980)、人工智能 ETF (515070)',
+    note:'与 AI 落地周期高度相关；警惕主题集中 / 拥挤回调',
+    macro:'AI 应用爆发 + 算力需求扩张周期'
+  }
+};
+
+const INDEX_CATEGORIES = [
+  {key:'all',      label:'全部指数'},
+  {key:'broad',    label:'宽基指数'},
+  {key:'strategy', label:'策略 · 红利 / 央企'},
+  {key:'theme',    label:'行业主题'}
+];
+
+/* 用于"自动匹配"的关键词 → 数据 key */
+const INDEX_MATCH = [
+  ['上证综合指数','shanghai'],['上证综指','shanghai'],
+  ['深证成份指数','shenzhen'],['深证成指','shenzhen'],
+  ['创业板指','chinext'],['创业板 50','chinext'],['创业板50','chinext'],
+  ['科创板 50','star50'],['科创板50','star50'],['科创 50','star50'],['科创50','star50'],
+  ['沪深 300','csi300'],['沪深300','csi300'],
+  ['中证 500','csi500'],['中证500','csi500'],
+  ['中证 1000','csi1000'],['中证1000','csi1000'],
+  ['中证 2000','csi2000'],['中证2000','csi2000'],
+  ['上证 50','sse50'],['上证50','sse50'],
+  ['中证 A50','csiA50'],['中证A50','csiA50'],
+  ['北证 50','bse50'],['北证50','bse50'],['北交所 50','bse50'],['北交所50','bse50'],
+  ['中证全指','csiall'],
+  ['中证红利','dividend'],['红利指数','dividend'],['红利 ETF','dividend'],
+  ['央企指数','soe'],['央企红利','soe'],['央企 ETF','soe'],['上证央企','soe'],
+  ['半导体指数','semi'],['半导体 ETF','semi'],['半导体ETF','semi'],
+  ['新能源指数','newenergy'],['新能源车','newenergy'],['新能源 ETF','newenergy'],
+  ['AI 主题','ai'],['人工智能 ETF','ai'],['AI ETF','ai']
+];
+
+/* ========== 渲染：网格视图 ========== */
+function renderIdxCategories(activeKey){
+  const root = document.getElementById('idx-cat-bar');
+  root.innerHTML = '';
+  INDEX_CATEGORIES.forEach(c=>{
+    const b = document.createElement('button');
+    b.className = 'idx-cat' + (c.key===activeKey ? ' active' : '');
+    b.textContent = c.label;
+    b.dataset.cat = c.key;
+    b.addEventListener('click', ()=>{ renderIdxGrid(c.key); renderIdxCategories(c.key); });
+    root.appendChild(b);
+  });
+}
+
+function renderIdxGrid(cat){
+  const root = document.getElementById('idx-grid');
+  root.innerHTML = '';
+  const list = Object.entries(INDEX_INFO).filter(([k,v])=> cat==='all' ? true : v.cat===cat);
+  list.forEach(([k,v])=>{
+    const card = document.createElement('div');
+    card.className = 'idx-card';
+    card.dataset.key = k;
+    card.innerHTML = `
+      <div class="idx-card-h">
+        <span class="idx-card-name">${v.short}</span>
+        <span class="idx-card-code">${v.code}</span>
+      </div>
+      <div class="idx-card-type">${v.type}</div>
+      <div class="idx-card-desc">${v.industry}</div>
+      <div class="idx-card-style"><b>风格：</b>${v.style.split('；')[0]}</div>`;
+    card.addEventListener('click', ()=> openIdxDetail(k));
+    root.appendChild(card);
+  });
+}
+
+/* ========== 渲染：详细视图 ========== */
+function openIdxDetail(key){
+  const v = INDEX_INFO[key];
+  if(!v) return;
+  document.getElementById('idx-view-grid').style.display = 'none';
+  document.getElementById('idx-view-detail').style.display = 'block';
+  document.getElementById('idx-modal-title-text').textContent = v.name;
+  document.getElementById('idx-modal-title-en').textContent = (v.code || '') + ' · INDEX PROFILE';
+
+  const root = document.getElementById('idx-view-detail');
+  root.innerHTML = `
+    <button class="idx-back" id="idx-back">← 返回列表</button>
+    <div class="idx-detail">
+      <div class="idx-detail-hero">
+        <div class="idx-detail-name-block">
+          <div class="idx-detail-name">${v.name}</div>
+          <div class="idx-detail-sub">代码 <b>${v.code}</b> · 简称 <b>${v.short}</b> · 编制 <b>${v.issuer}</b></div>
+        </div>
+        <div class="idx-detail-tags">
+          <span class="idx-tag navy">${v.type}</span>
+          <span class="idx-tag gold">${v.cat==='broad'?'宽基':v.cat==='strategy'?'策略':'主题'}</span>
+        </div>
+      </div>
+
+      <div class="idx-section">
+        <div class="idx-section-h">编制规则与样本 <small>UNIVERSE &amp; CONSTRUCTION</small></div>
+        <div class="idx-rows">
+          <div class="idx-row"><span class="idx-row-label">编制机构</span><span class="idx-row-value">${v.issuer}</span></div>
+          <div class="idx-row"><span class="idx-row-label">样本空间</span><span class="idx-row-value">${v.universe}</span></div>
+          <div class="idx-row"><span class="idx-row-label">成分数量</span><span class="idx-row-value">${v.sample}</span></div>
+          <div class="idx-row"><span class="idx-row-label">行业结构</span><span class="idx-row-value">${v.industry}</span></div>
+        </div>
+      </div>
+
+      <div class="idx-section">
+        <div class="idx-section-h">风险收益特征 <small>RISK / RETURN PROFILE</small></div>
+        <div class="idx-row" style="background:var(--paper);border:1px solid var(--line);padding:11px 14px">
+          <span class="idx-row-label">风格定位</span><span class="idx-row-value">${v.style}</span>
+        </div>
+        <div class="idx-rrr">
+          <div class="idx-rrr-cell"><div class="idx-rrr-label">成长性</div><div class="idx-rrr-value">${v.growth}</div></div>
+          <div class="idx-rrr-cell"><div class="idx-rrr-label">波动性</div><div class="idx-rrr-value">${v.volatility}</div></div>
+          <div class="idx-rrr-cell"><div class="idx-rrr-label">分红 / 股息</div><div class="idx-rrr-value">${v.yieldR}</div></div>
+        </div>
+      </div>
+
+      <div class="idx-section">
+        <div class="idx-section-h">投资用途与适合人群 <small>INVESTMENT USE</small></div>
+        <div class="idx-purpose-grid">
+          <div class="idx-purpose-cell">
+            <div class="idx-purpose-cell-label">投资用途</div>
+            <div class="idx-purpose-cell-text">${v.purpose}</div>
+          </div>
+          <div class="idx-purpose-cell investors">
+            <div class="idx-purpose-cell-label">适合人群</div>
+            <div class="idx-purpose-cell-text">${v.investors}</div>
+          </div>
+          <div class="idx-purpose-cell macro" style="grid-column:1/-1">
+            <div class="idx-purpose-cell-label">适配宏观 / 风格环境</div>
+            <div class="idx-purpose-cell-text">${v.macro}</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="idx-section">
+        <div class="idx-section-h">代表 ETF <small>REPRESENTATIVE ETFS</small></div>
+        <div class="idx-etf-row"><b>📊 ${v.repETF}</b></div>
+      </div>
+
+      <div class="idx-note">${v.note}</div>
+    </div>`;
+
+  document.getElementById('idx-back').addEventListener('click', closeIdxDetail);
+}
+
+function closeIdxDetail(){
+  document.getElementById('idx-view-detail').style.display = 'none';
+  document.getElementById('idx-view-grid').style.display = 'block';
+  document.getElementById('idx-modal-title-text').textContent = '指数百科';
+  document.getElementById('idx-modal-title-en').textContent = 'A-SHARE INDEX ENCYCLOPEDIA';
+}
+
+/* ========== 打开 / 关闭 弹窗 ========== */
+function openIdxModal(key){
+  const ovl = document.getElementById('idx-overlay');
+  ovl.classList.add('open');
+  document.body.style.overflow = 'hidden';
+  if(key && INDEX_INFO[key]){
+    openIdxDetail(key);
+  } else {
+    closeIdxDetail();
+  }
+}
+function closeIdxModal(){
+  document.getElementById('idx-overlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.getElementById('idx-fab').addEventListener('click', ()=> openIdxModal());
+document.getElementById('idx-modal-close').addEventListener('click', closeIdxModal);
+document.getElementById('idx-overlay').addEventListener('click', e=>{
+  if(e.target.id === 'idx-overlay') closeIdxModal();
+});
+document.addEventListener('keydown', e=>{
+  if(e.key === 'Escape' && document.getElementById('idx-overlay').classList.contains('open')) closeIdxModal();
+});
+
+/* 初始化网格 */
+renderIdxCategories('all');
+renderIdxGrid('all');
+
+/* ========== 自动匹配：将文档中的指数名称变成可点击链接 ========== */
+/* 按长度倒序匹配，避免短词覆盖长词（"沪深 300" 优先于 "300"） */
+const sortedMatches = [...INDEX_MATCH].sort((a,b)=> b[0].length - a[0].length);
+function wireIndexLinks(){
+  /* 在 KPI 标签、表格 <b>、表格 td 文本中扫描 */
+  const targets = [
+    ...document.querySelectorAll('.kpi-label'),
+    ...document.querySelectorAll('table.research td b'),
+    ...document.querySelectorAll('.outlook-name'),
+    ...document.querySelectorAll('.theme-name'),
+    ...document.querySelectorAll('.theme-etf'),
+    ...document.querySelectorAll('.alloc-list li')
+  ];
+  targets.forEach(el=>{
+    if(el.dataset.idxWired) return;
+    let html = el.innerHTML;
+    let touched = false;
+    sortedMatches.forEach(([term, key])=>{
+      /* 简单字符串切片：找首个未被包裹的位置 */
+      if(html.indexOf('data-idx="'+key+'"') >= 0) return;
+      const idx = html.indexOf(term);
+      if(idx < 0) return;
+      /* 避免匹配进 attribute 内（粗略检测前面是否有 ="...） */
+      const before = html.slice(Math.max(0, idx-30), idx);
+      if(/="[^"]*$/.test(before)) return;
+      html = html.slice(0, idx)
+        + `<a class="idx-link" data-idx="${key}" title="查看指数详情：${INDEX_INFO[key].name}">${term}</a>`
+        + html.slice(idx + term.length);
+      touched = true;
+    });
+    if(touched){ el.innerHTML = html; el.dataset.idxWired = '1'; }
+  });
+  /* 委托点击 */
+  document.body.addEventListener('click', e=>{
+    const a = e.target.closest('.idx-link');
+    if(a){ e.preventDefault(); openIdxModal(a.dataset.idx); }
+  });
+}
+/* 由于其他渲染函数同步执行后已生成 DOM，这里直接调用即可 */
+wireIndexLinks();
+/* 二次调用：捕获后渲染的内容（例如 ETF 表切换 / 主题切换） */
+const _origRenderEtf = renderEtfTable;
+renderEtfTable = function(k){ _origRenderEtf(k); wireIndexLinks(); };
+const _origRenderMon = renderMonitors;
+renderMonitors = function(k){ _origRenderMon(k); wireIndexLinks(); };
+const _origRenderH2Tracks = renderH2Tracks;
+renderH2Tracks = function(k){ _origRenderH2Tracks(k); wireIndexLinks(); };
+const _origRenderH2Pf = renderH2Portfolio;
+renderH2Portfolio = function(k){ _origRenderH2Pf(k); wireIndexLinks(); };
 </script>
 
 </body>
