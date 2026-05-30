@@ -98,6 +98,12 @@
   .idx-card-h{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px;gap:8px}
   .idx-card-name{font-family:'Noto Serif SC';font-weight:700;font-size:15.5px;color:var(--navy)}
   .idx-card-code{font-size:10.5px;color:var(--ink-3);letter-spacing:1px;font-family:'Courier New',monospace}
+  .idx-card-rt{display:flex;flex-direction:column;align-items:flex-end;gap:3px}
+  .idx-card-ytd{font-family:'Noto Serif SC';font-weight:700;font-size:13px;letter-spacing:.3px;padding:1px 7px;border-radius:2px;white-space:nowrap}
+  .idx-card-ytd .ytd-k{font-family:'Noto Sans SC';font-weight:500;font-size:9.5px;letter-spacing:1px;opacity:.7;margin-right:3px}
+  .idx-card-ytd.up{color:var(--up-deep);background:var(--up-soft)}
+  .idx-card-ytd.down{color:var(--down-deep);background:var(--down-soft)}
+  .idx-card-ytd.flat{color:var(--flat);background:#EEEBE3}
   .idx-card-type{font-size:11px;color:var(--up-deep);background:var(--up-soft);padding:2px 7px;margin-bottom:6px;display:inline-block;letter-spacing:1px}
   .idx-card-desc{font-size:12.5px;color:var(--ink-2);line-height:1.55}
   .idx-card-style{font-size:11px;color:var(--ink-3);margin-top:6px;padding-top:6px;border-top:1px dashed var(--line)}
@@ -266,7 +272,7 @@
     </div>
     <div class="topbar-meta">
       <span>覆盖：<b>22 个指数 · 12 大章节</b></span>
-      <span>更新：<b>2026-05-26</b></span>
+      <span>更新：<b>2026-05-29</b></span>
     </div>
   </div>
 </header>
@@ -303,6 +309,7 @@
     <span class="pill gold">策略指数 5</span>聚焦红利 / 央企 / 国企等因子；
     <span class="pill up">行业主题 5</span>对应半导体 / 新能源 / AI / 军工 / 机器人等热门赛道。
     <b>点击任一卡片</b>展开该指数的完整信息（编制规则、行业结构、风险收益、代表 ETF）。
+    每张卡片右上角标注 <b>YTD 年初至今涨幅</b>（全 22 指数 · 截至 2026-05-29 收盘）；如需更新可在脚本 <code>YTD</code> 数据块中直接改数字。
   </div>
 
   <div class="sub-tabs" id="cat-tabs">
@@ -578,7 +585,7 @@
   </div>
 </section>
 
-<footer>· A 股指数体系交互式指南 · 17 指数 × 12 章节 · 2026-05-26 ·</footer>
+<footer>· A 股指数体系交互式指南 · 22 指数 × 12 章节 · 2026-05-29 ·</footer>
 
 </main>
 
@@ -773,6 +780,93 @@ INDEX_DATA.forEach(d=>{
 });
 
 /* =================================================================== */
+/* ===== YTD 年初至今涨跌幅（%）· 单一可编辑数据源 ===================== */
+/* 全部 22 指数已填（YTD 年初至今，截至 2026-05-29 收盘）。              */
+/* 如需更新：直接改下方数字；卡片与详情会自动着色（涨红 / 跌绿 / 占位灰）。 */
+const YTD_ASOF = '2026-05-29';
+const YTD = {
+  /* 宽基 */
+  shanghai:7.1, shenzhen:12.3, chinext:26.1, star50:65.0, csi300:11.5,
+  csi500:13.8, csi1000:9.2, csi2000:5.7, sse50:3.2, csiA50:10.8,
+  bse50:18.5, csiall:10.3,
+  /* 策略 */
+  dividend:2.5, lowVol:2.0, soe:3.3, soeDiv:0.7, aOneHundred:9.0,
+  /* 行业主题 */
+  semi:55.0, newenergy:16.2, ai:50.4, military:7.3, robot:6.8
+};
+INDEX_DATA.forEach(d=>{ d.ytd = (d.key in YTD) ? YTD[d.key] : null; });
+
+/* =================================================================== */
+/* ===== 前三大权重股 + 深度分析（截至 2026-05-29）· 可编辑数据源 ====== */
+const HOLDINGS = {
+  shanghai:'贵州茅台、工商银行、中国石油',
+  shenzhen:'宁德时代、中际旭创、新易盛',
+  chinext:'宁德时代、中际旭创、新易盛',
+  star50:'寒武纪、澜起科技、海光信息',
+  csi300:'宁德时代、中际旭创、贵州茅台',
+  csi500:'华虹公司、百济神州、江波龙',
+  csi1000:'多为市值 100-200 亿元的细分行业龙头',
+  csi2000:'多为市值 50 亿元以下的企业',
+  sse50:'贵州茅台、工商银行、中国平安',
+  csiA50:'宁德时代、贵州茅台、中际旭创',
+  bse50:'贝特瑞、连城数控、吉林碳谷',
+  csiall:'宁德时代、中际旭创、贵州茅台',
+  dividend:'中国神华、工商银行、建设银行',
+  lowVol:'工商银行、建设银行、长江电力',
+  soe:'中国石油、中国石化、中国神华',
+  soeDiv:'中国神华、中国石油、工商银行',
+  aOneHundred:'宁德时代、贵州茅台、中际旭创',
+  semi:'寒武纪、中芯国际、海光信息',
+  newenergy:'宁德时代、比亚迪、隆基绿能',
+  ai:'中际旭创、新易盛、寒武纪',
+  military:'中航沈飞、中直股份、航发动力',
+  robot:'汇川技术、埃斯顿、机器人'
+};
+const ANALYSIS = {
+  shanghai:'作为 A 股最具历史意义的指数，上证综指传统行业占比过高，在科技牛市中表现相对落后。但市场调整时防御属性凸显，5 月 29 日仅下跌 0.28%。',
+  shenzhen:'更能代表中国新经济发展方向，科技成长板块贡献主要收益。但成分股较为分散，涨幅低于创业板指与科创 50。',
+  chinext:'A 股成长风格的代表，AI 光模块龙头中际旭创、新易盛年内涨幅均超 200%，是指数上涨的主要驱动力；新能源板块经前期调整后于二季度有所反弹。',
+  star50:'2026 年最耀眼的明星指数，半导体 + AI 算力双主线驱动大幅上涨。前十大权重股中 9 只为半导体，行业集中度极高——既是高弹性来源，也带来较大波动风险。',
+  csi300:'机构核心配置标的，行业分布正深刻变化，科技成长权重已超过金融。但传统行业仍占一定比例，涨幅低于纯成长风格指数。',
+  csi500:'行业分布均衡，无单一行业权重超 20%，有效降低集中度风险。半导体与先进制造的中盘龙头表现出色，推动指数上涨。',
+  csi1000:'成分股众多、业绩分化明显。资金集中于龙头的环境下小盘整体偏弱，仅少数具备核心竞争力的企业获资金青睐。',
+  csi2000:'成分股流动性较差、估值波动大。注册制全面推行下微盘股壳价值大幅下降，投资风险显著上升。',
+  sse50:'传统行业占比过高、成长性不足，科技牛市中表现落后。但市场调整时防御属性明显，5 月 29 日逆势上涨 0.35%。',
+  csiA50:'各行业龙头的集合，兼具价值与成长。行业分布比上证 50 更均衡、比沪深 300 更集中于龙头，适合追求稳健收益的投资者。',
+  bse50:'聚焦创新型中小企业，受益于“专精特新”支持政策。但北交所整体流动性较差、个股波动大，投资风险较高。',
+  csiall:'覆盖 A 股全部上市公司，是衡量市场整体收益的最佳基准。表现介于大盘价值与小盘成长之间，反映市场平均收益水平。',
+  dividend:'典型防御性指数，市场下跌时表现稳健。5 月科技板块调整期间成为资金避风港，单月上涨超过 3%。',
+  lowVol:'在红利指数基础上加入低波因子，进一步降低组合风险。成分股多为业绩稳定、现金流充沛的蓝筹，适合风险厌恶型投资者。',
+  soe:'成分股多为关系国计民生的大型央企，估值低、分红稳定。受益于国企改革与中特估概念，2025 年表现出色，2026 年进入震荡整理。',
+  soeDiv:'兼具央企背景与高股息属性，是防御性投资的重要工具。但成分股多为传统行业、成长性不足，牛市中往往落后于市场均值。',
+  aOneHundred:'沪深 300 的“精华版”，剔除其中市值较小、流动性较差的成分股。行业分布均衡、龙头效应明显，适合作为核心资产配置。',
+  semi:'2026 年最强主线，受益于全球 AI 算力需求爆发与国产自主可控战略加速。但 5 月 29 日受国家大基金密集减持影响暴跌 5.61%，短期调整压力较大。',
+  newenergy:'经 2023-2024 年深度调整后，2026 年迎来估值修复。但行业竞争加剧、产能过剩，涨幅远低于半导体与 AI。',
+  ai:'AI 产业革命加速推进，算力基础设施最先受益。光模块龙头中际旭创、新易盛年内涨幅均超 200%，是 AI 主题上涨的主要驱动力。',
+  military:'受政策影响较大，业绩确定性高但成长性相对偏弱。2026 年资金主要流向科技成长，军工关注度下降，表现落后于市场均值。',
+  robot:'人形机器人产业发展迅速、相关标准近期落地，但市场资金高度集中于半导体与 AI，机器人板块未获足够关注，表现相对平淡。'
+};
+INDEX_DATA.forEach(d=>{ d.top3 = HOLDINGS[d.key]||'—'; d.analysis = ANALYSIS[d.key]||''; });
+
+/* YTD 渲染助手 */
+function ytdClass(v){ return (v===null||v===undefined) ? 'flat' : (v>0?'up':(v<0?'down':'flat')); }
+function ytdLabel(v){
+  if(v===null||v===undefined) return '—';
+  return (v>0?'+':'') + v.toFixed(1) + '%';
+}
+function ytdBadge(d){
+  const cls = ytdClass(d.ytd);
+  const ph = (d.ytd===null||d.ytd===undefined) ? ' title="待补充"' : '';
+  return `<span class="idx-card-ytd ${cls}"${ph}><span class="ytd-k">YTD</span>${ytdLabel(d.ytd)}</span>`;
+}
+function ytdText(d){
+  const v = d.ytd;
+  if(v===null||v===undefined) return `<span style="color:var(--flat)">— 待补充</span>`;
+  const c = v>0?'var(--up)':(v<0?'var(--down)':'var(--flat)');
+  return `<span style="color:${c};font-weight:700;font-family:'Noto Serif SC'">${ytdLabel(v)}</span>`;
+}
+
+/* =================================================================== */
 /* ===== Ch1: 指数总览 ===== */
 /* =================================================================== */
 function renderGrid(cat){
@@ -786,7 +880,10 @@ function renderGrid(cat){
     c.innerHTML = `
       <div class="idx-card-h">
         <span class="idx-card-name">${d.short}</span>
-        <span class="idx-card-code">${d.code}</span>
+        <span class="idx-card-rt">
+          ${ytdBadge(d)}
+          <span class="idx-card-code">${d.code}</span>
+        </span>
       </div>
       <div class="idx-card-type">${d.type}</div>
       <div class="idx-card-desc">${d.industry}</div>
@@ -812,15 +909,18 @@ function openDetail(key){
       </div>
     </div>
     <div class="idx-detail-row">
+      <div class="idx-detail-cell"><div class="idx-detail-cell-label">YTD 年初至今 <span style="opacity:.7">· 截至 ${YTD_ASOF}</span></div><div class="idx-detail-cell-val">${ytdText(d)}</div></div>
       <div class="idx-detail-cell"><div class="idx-detail-cell-label">样本空间</div><div class="idx-detail-cell-val">${d.universe}</div></div>
       <div class="idx-detail-cell"><div class="idx-detail-cell-label">成分数量</div><div class="idx-detail-cell-val">${d.sample}</div></div>
       <div class="idx-detail-cell"><div class="idx-detail-cell-label">行业结构</div><div class="idx-detail-cell-val">${d.industry}</div></div>
+      <div class="idx-detail-cell"><div class="idx-detail-cell-label">前三大权重股</div><div class="idx-detail-cell-val">${d.top3}</div></div>
       <div class="idx-detail-cell"><div class="idx-detail-cell-label">投资风格</div><div class="idx-detail-cell-val">${d.style}</div></div>
       <div class="idx-detail-cell"><div class="idx-detail-cell-label">成长性 / 波动 / 分红</div><div class="idx-detail-cell-val">${d.growth} / ${d.vol} / ${d.div}</div></div>
       <div class="idx-detail-cell"><div class="idx-detail-cell-label">适合策略</div><div class="idx-detail-cell-val">${d.strategy}</div></div>
       <div class="idx-detail-cell"><div class="idx-detail-cell-label">适合投资者</div><div class="idx-detail-cell-val">${d.investors}</div></div>
       <div class="idx-detail-cell"><div class="idx-detail-cell-label">适配宏观环境</div><div class="idx-detail-cell-val">${d.macro}</div></div>
       <div class="idx-detail-cell" style="grid-column:1/-1"><div class="idx-detail-cell-label">代表 ETF</div><div class="idx-detail-cell-val"><b>${d.etf}</b></div></div>
+      ${d.analysis ? `<div class="idx-detail-cell" style="grid-column:1/-1"><div class="idx-detail-cell-label">深度分析 · 截至 ${YTD_ASOF}</div><div class="idx-detail-cell-val">${d.analysis}</div></div>` : ''}
       <div class="idx-detail-cell" style="grid-column:1/-1;background:var(--up-soft)"><div class="idx-detail-cell-label" style="color:var(--up-deep)">💡 备注</div><div class="idx-detail-cell-val">${d.note}</div></div>
     </div>`;
   if(typeof root.scrollIntoView === 'function') root.scrollIntoView({behavior:'smooth', block:'nearest'});
