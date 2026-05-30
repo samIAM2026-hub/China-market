@@ -257,6 +257,21 @@
   .idx-detail-cell{background:var(--paper);border:1px solid var(--line);padding:10px 12px}
   .idx-detail-cell-label{font-size:10.5px;color:var(--ink-3);letter-spacing:1.5px;margin-bottom:3px}
   .idx-detail-cell-val{font-size:13px;color:var(--ink);line-height:1.5}
+
+  /* DCA / 定投指南 */
+  .dca-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:14px;margin:14px 0}
+  .dca-card{background:var(--paper);border:1px solid var(--line);border-top:3px solid var(--navy);padding:16px 18px}
+  .dca-card.r-low{border-top-color:var(--down)}
+  .dca-card.r-mid{border-top-color:var(--gold)}
+  .dca-card.r-midhigh{border-top-color:var(--warm)}
+  .dca-card.r-high{border-top-color:var(--up)}
+  .dca-card-h{display:flex;justify-content:space-between;align-items:baseline;gap:8px;margin-bottom:8px}
+  .dca-card-name{font-family:'Noto Serif SC';font-weight:900;color:var(--navy);font-size:17px}
+  .dca-row{font-size:12.5px;color:var(--ink-2);padding:6px 0;border-bottom:1px dashed var(--line);line-height:1.55}
+  .dca-row:last-child{border-bottom:0}
+  .dca-row b{color:var(--navy);font-weight:500}
+  .dca-fund{font-family:'Courier New',monospace;font-size:11.5px;color:var(--up-deep)}
+  .dca-allot{font-size:11px;letter-spacing:1px;padding:2px 8px;border-radius:2px;background:#E9EEF5;color:var(--navy);white-space:nowrap}
 </style>
 </head>
 <body>
@@ -271,7 +286,7 @@
       </div>
     </div>
     <div class="topbar-meta">
-      <span>覆盖：<b>22 个指数 · 12 大章节</b></span>
+      <span>覆盖：<b>22 个指数 · 13 大章节</b></span>
       <span>更新：<b>2026-05-29</b></span>
     </div>
   </div>
@@ -291,6 +306,7 @@
     <a class="chapter-tab" data-target="ch10"><span class="num">拾</span>组合示例</a>
     <a class="chapter-tab" data-target="ch11"><span class="num">十一</span>常见误区</a>
     <a class="chapter-tab" data-target="ch12"><span class="num">十二</span>选择流程</a>
+    <a class="chapter-tab" data-target="ch13"><span class="num">十三</span>定投指南</a>
   </div>
 </nav>
 
@@ -585,7 +601,161 @@
   </div>
 </section>
 
-<footer>· A 股指数体系交互式指南 · 22 指数 × 12 章节 · 2026-05-29 ·</footer>
+<!-- ============ 十三 · 普通投资者定投指南 ============ -->
+<section class="chapter" id="ch13">
+  <div class="ch-head">
+    <div class="ch-title"><span class="ch-num">十三</span><span>普通投资者指数定投全指南</span></div>
+    <div class="ch-en">CHAPTER 13 · DCA PLAYBOOK</div>
+  </div>
+
+  <div class="tldr">
+    <b>对绝大多数普通投资者，最优策略 = 长期定投「沪深 300 + 中证 500」两只宽基。</b>
+    不盯盘、不选股、不预测，用「懒人式」定期定额分享经济增长红利，长期跑赢 90% 以上的散户与主动基金。
+    <b>定投成败不在于选了多牛的指数，而在于能否坚持 3-5 年穿越一轮牛熊。</b>
+  </div>
+
+  <div class="sub-h">一、为什么定投最适合普通人 <small>WHY DCA</small></div>
+  <div class="conclusion-grid">
+    <div class="conc"><div class="conc-num">01</div><h4>长期必然上涨</h4><p>指数代表一国或一行业整体经济，只要经济在发展，指数长期必然向上。</p></div>
+    <div class="conc"><div class="conc-num">02</div><h4>自动摊薄成本</h4><p>下跌买入更多份额、上涨买入更少份额，天然实现「低买高卖」。</p></div>
+    <div class="conc"><div class="conc-num">03</div><h4>风险极度分散</h4><p>一只指数含几十到几百只股票，单只暴雷对整体影响微乎其微。</p></div>
+    <div class="conc"><div class="conc-num">04</div><h4>费用极低</h4><p>指数基金管理费通常 0.15%-0.5%，远低于主动基金的 1.5%-2%。</p></div>
+    <div class="conc"><div class="conc-num">05</div><h4>操作简单</h4><p>设置好自动定投后几乎无需操作，适合上班族与理财新手。</p></div>
+  </div>
+
+  <div class="sub-h" style="margin-top:26px">二、核心宽基 · 必配底仓 <small>占定投资金 60%-80%</small></div>
+  <div class="dca-grid">
+    <div class="dca-card r-low">
+      <div class="dca-card-h"><span class="dca-card-name">沪深 300</span><span class="pill down">中低风险</span></div>
+      <div class="dca-row"><b>定位：</b>A 股最具代表性的大盘宽基，覆盖沪深市值最大、流动性最好的 300 家蓝筹，约占 A 股总市值 56%。新手入门首选。</div>
+      <div class="dca-row"><b>成分：</b>金融 / 消费 / 能源 / 制造 / 科技各行业龙头，业绩稳定、分红良好。</div>
+      <div class="dca-row"><b>历史：</b>近 10 年年化约 <span class="perf-up" style="font-family:'Noto Serif SC'">7.1%</span>，最大回撤 45%。</div>
+      <div class="dca-row"><b>推荐基金：</b><br/><span class="dca-fund">510300</span> 华泰柏瑞沪深 300ETF（费 0.15%/年）<br/><span class="dca-fund">460005</span> 华泰柏瑞沪深 300ETF 联接 A</div>
+      <div class="dca-row"><b>适合：</b>所有定投新手、稳健型、追求长期稳健收益的上班族。</div>
+    </div>
+    <div class="dca-card r-mid">
+      <div class="dca-card-h"><span class="dca-card-name">中证 500</span><span class="pill gold">中风险</span></div>
+      <div class="dca-row"><b>定位：</b>A 股中盘成长代表，剔除沪深 300 后市值前 500 的企业。平衡型优选，增强收益弹性。</div>
+      <div class="dca-row"><b>成分：</b>专精特新、中端制造、新兴产业龙头，成长性优于大盘股。</div>
+      <div class="dca-row"><b>历史：</b>近 10 年年化约 <span class="perf-up" style="font-family:'Noto Serif SC'">6.8%</span>，最大回撤 50%。</div>
+      <div class="dca-row"><b>推荐基金：</b><br/><span class="dca-fund">510500</span> 南方中证 500ETF（费 0.2%/年）<br/><span class="dca-fund">160119</span> 南方中证 500ETF 联接 A</div>
+      <div class="dca-row"><b>适合：</b>能接受小幅波动、想在稳健基础上增强收益的平衡型投资者。</div>
+    </div>
+    <div class="dca-card r-midhigh">
+      <div class="dca-card-h"><span class="dca-card-name">创业板指</span><span class="pill" style="background:#FCE3D4;color:#9C4A1E">中高风险</span></div>
+      <div class="dca-row"><b>定位：</b>双创成长先锋，聚焦创业板优质成长股。成长型首选，高弹性高收益。</div>
+      <div class="dca-row"><b>成分：</b>新能源 / 生物医药 / 互联网科技 / 高端制造等高成长赛道。</div>
+      <div class="dca-row"><b>历史：</b>近 5 年年化约 <span class="perf-up" style="font-family:'Noto Serif SC'">9.2%</span>，最大回撤 40%。</div>
+      <div class="dca-row"><b>推荐基金：</b><br/><span class="dca-fund">159915</span> 易方达创业板 ETF<br/><span class="dca-fund">110026</span> 易方达创业板 ETF 联接 A</div>
+      <div class="dca-row"><b>适合：</b>年轻、有一定经验、能承受较大波动的成长型投资者。</div>
+    </div>
+    <div class="dca-card r-high">
+      <div class="dca-card-h"><span class="dca-card-name">科创 50</span><span class="pill up">高风险 · 仓位≤20%</span></div>
+      <div class="dca-row"><b>定位：</b>硬核科技战略配置，聚焦科创板最具代表性的 50 家企业。激进型配置、硬科技未来。</div>
+      <div class="dca-row"><b>成分：</b>半导体 / 人工智能 / 高端装备 / 生物医药等硬核科技。</div>
+      <div class="dca-row"><b>历史：</b>近 10 年年化约 <span class="perf-up" style="font-family:'Noto Serif SC'">10.2%</span>，最大回撤 62%。</div>
+      <div class="dca-row"><b>推荐基金：</b><br/><span class="dca-fund">588000</span> 华夏科创 50ETF<br/><span class="dca-fund">011612</span> 华泰柏瑞科创 50ETF 联接 A</div>
+      <div class="dca-row"><b>适合：</b>长期看好中国科技、能承受剧烈波动的激进型投资者。<b style="color:var(--up-deep)">仓位上限 20%。</b></div>
+    </div>
+  </div>
+
+  <div class="sub-h" style="margin-top:26px">三、卫星配置 · 行业 / 主题 <small>占 20%-40%，绝不超 50%</small></div>
+  <div class="quote" style="border-left-color:var(--warm);background:#FDF1E7;color:#8A4A1E">行业指数波动更大，但在行业景气周期中能获得远超宽基的收益。务必用定投平滑成本。</div>
+  <div class="dca-grid">
+    <div class="dca-card r-high">
+      <div class="dca-card-h"><span class="dca-card-name">人工智能主题</span><span class="pill up">最具爆发力</span></div>
+      <div class="dca-row"><b>核心逻辑：</b>全球 AI 算力需求爆发，2026 年全球 AI 服务器出货量同比 +65%，光模块 / AI 芯片供需极度紧张。</div>
+      <div class="dca-row"><b>纳斯达克 100：</b>全球 AI 龙头聚集（英伟达、微软、谷歌、Meta 等），收益更稳、回撤更小。<br/><span class="dca-fund">270042</span> 广发纳斯达克 100ETF 联接 A</div>
+      <div class="dca-row"><b>中证人工智能：</b>覆盖 A 股 AI 全产业链（算力 / 算法 / 应用）。<br/><span class="dca-fund">159819</span> 易方达中证人工智能 ETF</div>
+      <div class="dca-row" style="color:var(--up-deep)"><b style="color:var(--up-deep)">注意：</b>AI 主题波动极大，<b style="color:var(--up-deep)">单只 AI 基金持仓不超总资产 15%</b>。</div>
+    </div>
+    <div class="dca-card r-mid">
+      <div class="dca-card-h"><span class="dca-card-name">消费 / 医药</span><span class="pill gold">长期刚需</span></div>
+      <div class="dca-row"><b>消费指数：</b>中证消费，覆盖食品饮料、家电等必需消费，抗跌性强。</div>
+      <div class="dca-row"><b>医药指数：</b>中证医药，人口老龄化背景下长期成长空间大。</div>
+      <div class="dca-row"><b>适合：</b>追求稳健成长、不想追高科技赛道的投资者。穿越牛熊的刚需赛道。</div>
+    </div>
+  </div>
+
+  <div class="sub-h" style="margin-top:26px">四、跨境指数 · 分散单一市场风险 <small>可选 10%-20%</small></div>
+  <div class="dca-grid">
+    <div class="dca-card">
+      <div class="dca-card-h"><span class="dca-card-name">标普 500</span><span class="pill navy">美股宽基</span></div>
+      <div class="dca-row"><b>定位：</b>美国最具代表性的宽基，囊括 500 家全球巨头，业务遍及全球、盈利稳健。</div>
+      <div class="dca-row"><b>推荐基金：</b><span class="dca-fund">050025</span> 博时标普 500ETF 联接 A</div>
+    </div>
+    <div class="dca-card">
+      <div class="dca-card-h"><span class="dca-card-name">恒生科技</span><span class="pill navy">港股科技</span></div>
+      <div class="dca-row"><b>定位：</b>覆盖港股科技核心（腾讯、阿里、美团等），当前估值处历史低位，性价比高。</div>
+      <div class="dca-row"><b>推荐基金：</b><span class="dca-fund">013402</span> 华夏恒生科技 ETF 联接 A</div>
+    </div>
+  </div>
+
+  <div class="sub-h" style="margin-top:26px">五、定投策略 · 可直接照做 <small>EXECUTION</small></div>
+  <div class="alloc-grid" style="grid-template-columns:repeat(auto-fit,minmax(240px,1fr))">
+    <div class="alloc-card core"><div class="alloc-stripe"></div>
+      <div class="alloc-title">频率与时间</div>
+      <div class="alloc-desc"><b>每月定投</b>最优，与发薪日同步（发薪后第 3 天自动扣款）。长期看周投与月投收益差 &lt;1%，月投更省心、更易坚持。</div>
+    </div>
+    <div class="alloc-card satellite"><div class="alloc-stripe"></div>
+      <div class="alloc-title">定投金额</div>
+      <div class="alloc-desc">只用 <b>3 年以上绝对不用的闲钱</b>，绝不用生活费 / 应急钱 / 借钱投资。建议每月投入工资的 <b>10%-20%</b>。</div>
+    </div>
+  </div>
+
+  <div class="sub-h" style="margin-top:22px">「核心 + 卫星」配置方案 <small>按风险偏好选择</small></div>
+  <div style="overflow-x:auto">
+    <table class="research">
+      <thead><tr>
+        <th>投资者类型</th><th>核心配置（60%-80%）</th><th>卫星配置（20%-40%）</th><th>预期年化</th><th>最大回撤</th>
+      </tr></thead>
+      <tbody>
+        <tr><td><b>保守型</b></td><td>沪深 300 <span class="dca-allot">80%</span></td><td>标普 500 <span class="dca-allot">20%</span></td><td><span class="perf-up">8%-12%</span></td><td>25%-30%</td></tr>
+        <tr><td><b>平衡型</b></td><td>沪深 300 <span class="dca-allot">50%</span> + 中证 500 <span class="dca-allot">30%</span></td><td>纳斯达克 100 <span class="dca-allot">20%</span></td><td><span class="perf-up">10%-15%</span></td><td>30%-35%</td></tr>
+        <tr><td><b>成长型</b></td><td>沪深 300 <span class="dca-allot">40%</span> + 中证 500 <span class="dca-allot">30%</span></td><td>创业板指 <span class="dca-allot">15%</span> + 纳指 100 <span class="dca-allot">15%</span></td><td><span class="perf-up">12%-18%</span></td><td>35%-45%</td></tr>
+        <tr><td><b>激进型</b></td><td>沪深 300 <span class="dca-allot">30%</span> + 中证 500 <span class="dca-allot">30%</span></td><td>科创 50 <span class="dca-allot">20%</span> + 人工智能 <span class="dca-allot">20%</span></td><td><span class="perf-up">15%-25%</span></td><td>45%-55%</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="sub-h" style="margin-top:22px">止盈策略 · 定投的灵魂 <small>定投不止盈，等于一场空</small></div>
+  <div class="dca-grid">
+    <div class="dca-card r-mid">
+      <div class="dca-card-h"><span class="dca-card-name">目标收益率法</span><span class="pill gold">新手首选</span></div>
+      <div class="dca-row"><b>方法：</b>预设固定收益目标，达标后分批赎回。</div>
+      <div class="dca-row"><b>目标：</b>宽基年化 15%-20%（或累计 20%-30%）；行业 / 主题年化 20%-25%（或累计 30%-40%）。</div>
+      <div class="dca-row"><b>分批：</b>达标先赎 50%，剩余 50% 设 10% 回撤止损（从高点回落 10% 全部卖出）。</div>
+    </div>
+    <div class="dca-card r-midhigh">
+      <div class="dca-card-h"><span class="dca-card-name">估值止盈法</span><span class="pill" style="background:#FCE3D4;color:#9C4A1E">进阶</span></div>
+      <div class="dca-row"><b>方法：</b>指数 PE 处近 5 年 80% 分位以上开始分批卖；超 90% 分位大幅减仓。</div>
+      <div class="dca-row"><b>查询：</b>天天基金网、理杏仁等平台免费查询指数估值。</div>
+      <div class="dca-row"><b>优势：</b>比目标收益率法更精准，能在市场高估时及时离场。</div>
+    </div>
+  </div>
+
+  <div class="quote" style="margin-top:14px"><b>最重要的一条纪律：浮亏时绝对不要停止定投。</b>定投盈利密码是「让低位筹码多过高位」——每次下跌都是用低价稀释成本的黄金机会。浮亏停投 = 主动放弃定投最大的优势。</div>
+
+  <div class="sub-h" style="margin-top:26px">六、普通投资者最易犯的错误 <small>COMMON MISTAKES</small></div>
+  <div class="conclusion-grid">
+    <div class="conc" style="border-top-color:var(--up)"><div class="conc-num">01</div><h4>追涨杀跌</h4><p>大涨加大投入、大跌停投甚至割肉——与定投逻辑完全相反。</p></div>
+    <div class="conc" style="border-top-color:var(--up)"><div class="conc-num">02</div><h4>频繁操作</h4><p>今天买、明天卖，赚不到钱还损失大量手续费。</p></div>
+    <div class="conc" style="border-top-color:var(--up)"><div class="conc-num">03</div><h4>单一押注</h4><p>把所有钱投到一个热门行业或一只基金，风险极高。</p></div>
+    <div class="conc" style="border-top-color:var(--up)"><div class="conc-num">04</div><h4>不设止盈</h4><p>赚了舍不得卖，最终从盈利变成亏损。</p></div>
+    <div class="conc" style="border-top-color:var(--up)"><div class="conc-num">05</div><h4>用短期资金</h4><p>定投需 3-5 年才能发威，短期资金很可能被迫在低位割肉。</p></div>
+  </div>
+
+  <div class="quote" style="margin-top:24px;border-left:3px solid var(--gold);background:#FFF7E0;color:var(--navy);font-family:'Noto Serif SC'">
+    <b>总结：</b>绝大多数普通投资者，最简单有效的策略就是<b>长期定投沪深 300 + 中证 500</b>。想博更高收益，用小部分资金配纳斯达克 100 或人工智能主题作卫星仓。
+    定投成功的关键只有两个字——<b>坚持</b>：穿越一轮完整牛熊，收益必远超银行理财与多数投资者。
+  </div>
+
+  <div style="margin-top:24px;text-align:center;font-size:12px;color:var(--ink-3);padding-top:16px;border-top:1px solid var(--line)">
+    基金代码、费率与历史收益为示意，投资前请以基金最新公告 / 天天基金网为准 · 本文档不构成投资建议
+  </div>
+</section>
+
+<footer>· A 股指数体系交互式指南 · 22 指数 × 13 章节 · 2026-05-29 ·</footer>
 
 </main>
 
