@@ -217,6 +217,7 @@
     font-family:'Noto Serif SC';font-weight:700;font-size:14px;letter-spacing:2px;display:flex;align-items:center;gap:8px;transition:all .2s}
   .idx-fab:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(14,42,71,.32)}
   .idx-fab .fab-ico{font-size:18px}
+  .idx-fab.guide{bottom:74px;background:linear-gradient(135deg,var(--navy) 0%,var(--navy-2) 100%);text-decoration:none}
 
   .idx-overlay{position:fixed;inset:0;background:rgba(14,42,71,.55);z-index:100;display:none;align-items:flex-start;justify-content:center;
     padding:40px 20px;overflow-y:auto}
@@ -1085,6 +1086,9 @@
 </main>
 
 <!-- =================== 指数百科 · Floating Button + Modal =================== -->
+<a class="idx-fab guide" href="index_guide.html" aria-label="打开A股指数体系交互式指南">
+  <span class="fab-ico">🧭</span><span>指数指南</span>
+</a>
 <button class="idx-fab" id="idx-fab" aria-label="打开指数百科">
   <span class="fab-ico">📖</span><span>指数百科</span>
 </button>
